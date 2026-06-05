@@ -1,17 +1,38 @@
 # Cloudflare Pages + Wrangler configuration for Project Rocket Science
-# Phase 0 — fully static export
+# Pure static Next.js export (see next.config.ts: output: "export")
+#
+# CRITICAL for Cloudflare Pages:
+# - Do NOT set a custom "Deploy command" (or "User deploy command") in the
+#   Pages project settings in the Cloudflare dashboard.
+# - Only configure: Build command = "npm run build", Build output directory = "out"
+# - The "Executing user deploy command: npx wrangler deploy" step is what
+#   triggers the "Missing entry-point" error because this is a static site,
+#   not a Worker.
+# - Use `npx wrangler pages deploy out --project-name=rocket-science` locally
+#   if you want to deploy via CLI (after `npm run build`).
 
 name = "rocket-science"
 compatibility_date = "2025-06-01"
 
-[build]
-command = "npm run build"
-cwd = "."
-
+# This is the key for Pages Git builds and wrangler pages commands.
+# It must be a top-level key (never inside [build]).
 pages_build_output_dir = "out"
 
-# If you later move to full SSR with @cloudflare/next-on-pages:
-# [build]
-# command = "npx @cloudflare/next-on-pages"
-# 
-# Then remove `output: "export"` from next.config.ts
+# NOTE:
+# We intentionally do NOT include an [assets] section here.
+# When `pages_build_output_dir` is present, this file is treated as a
+# Cloudflare *Pages* configuration. `[assets]` is only for the Workers + Assets
+# (or `wrangler deploy` Worker) path and triggers:
+#   "Configuration file for Pages projects does not support "assets""
+#
+# If you ever migrate away from pure static Pages to Workers+Assets / OpenNext,
+# you will remove `output: "export"` + `pages_build_output_dir` and switch to
+# a `main` entry + [assets] (see commented example below).
+
+# If you later migrate to SSR / Workers + Assets (e.g. @cloudflare/next-on-pages
+# or OpenNext), remove `output: "export"` from next.config.ts and update this file.
+# Example for full Workers:
+# main = ".open-next/worker.js"   # or similar
+# compatibility_flags = ["nodejs_compat"]
+# [assets]
+# directory = ".open-next/assets"

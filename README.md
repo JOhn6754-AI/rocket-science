@@ -85,39 +85,54 @@ rocket-science/
 ## Cloudflare Pages Deployment
 
 This project is configured for **pure static hosting** (the simplest and most reliable path).
+All routes are SSG static HTML. No Workers entrypoint. Simulators run 100% in the browser.
 
-### Recommended Deployment Steps
+### CRITICAL: The exact error you have been hitting
 
-1. Push this repo to GitHub.
+Your last 3 deploys showed:
+- Next.js build **succeeds** ("Success: Build command completed", all /lessons/*, /simulators/*, /rocket-forge etc. listed)
+- Then `Executing user deploy command: npx wrangler deploy`
+- Warning: `Unexpected fields found in build field: "pages_build_output_dir"`
+- Fatal: `✘ [ERROR] Missing entry-point to Worker script or to assets directory`
 
-2. In the Cloudflare dashboard:
-   - Create a new **Pages** project
-   - Connect your GitHub repo
-   - **Framework preset**: None (or "Next.js" — we will override)
+**Root cause:** In your Cloudflare Pages project settings, there is a custom **"Deploy command"** (sometimes labeled "User deploy command") set to `npx wrangler deploy`.
+
+For a static Pages site you must **leave the Deploy command completely blank**. Cloudflare's Pages system will handle the static asset upload automatically after the build outputs to `out/`.
+
+### Recommended Deployment Steps (GitHub + CF Pages)
+
+1. Make sure your local changes are committed and pushed to GitHub (this repo's `main` branch).
+
+2. In the Cloudflare dashboard → your Pages project → **Settings → Builds & deployments**:
    - **Build command**: `npm run build`
    - **Build output directory**: `out`
-   - **Root directory**: `/` (or the folder containing this project if monorepo)
+   - **Root directory**: (leave as `.` or the subdir if this is inside a monorepo)
+   - **Deploy command**: **DELETE EVERYTHING IN THIS FIELD / LEAVE IT EMPTY**
+   - Framework preset: **None** (or Next.js, then override the two fields above)
 
-3. Add environment variable if needed (none required for Phase 0).
+3. Save. Then either:
+   - Push a new commit to trigger auto-deploy, or
+   - Click "Retry deployment" / "Deploy now" on the project.
 
-4. (Optional but nice) Add a custom domain.
+4. (Optional) Custom domain, etc.
 
-### Alternative: Direct Wrangler
+### Verify locally first (recommended)
 
 ```bash
-npm run build
+cd rocket-science
+npm run build          # must produce ./out with index.html + all routes
 npx wrangler pages deploy out --project-name=rocket-science
 ```
 
+This uses the correct `pages deploy` subcommand + the `out` dir.
+
+### If you ever see the TOML warning again
+
+The current [wrangler.toml](/home/jaxon/rocket-science/wrangler.toml) has `pages_build_output_dir` and `[assets]` at top level (never inside `[build]`). If the warning persists it is almost always because the dashboard "Deploy command" is still forcing the wrong `wrangler deploy`.
+
 ### Future SSR Path (when you need auth / D1)
 
-Remove `output: "export"` from `next.config.ts` and use:
-
-```bash
-npm install --save-dev @cloudflare/next-on-pages wrangler
-```
-
-Update `wrangler.toml` and use the adapter. See the comments inside `next.config.ts` and `wrangler.toml`.
+Remove `output: "export"` from `next.config.ts` and use the Cloudflare adapter. See comments in `next.config.ts` + `wrangler.toml`.
 
 ---
 
