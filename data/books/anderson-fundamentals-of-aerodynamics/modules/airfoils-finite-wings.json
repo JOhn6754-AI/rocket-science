@@ -1,0 +1,37 @@
+{
+  "id": "anderson-airfoils-finite-wings",
+  "bookId": "anderson-foa-5e",
+  "slug": "airfoils-finite-wings",
+  "title": "Airfoils & Finite Wing Theory",
+  "chapterRef": "Chapters 4–5, 9 (Thin Airfoil & Lifting Line)",
+  "order": 4,
+  "summary": "Thin airfoil theory gives the foundation for Cl(α) and the Kutta condition. Prandtl's lifting-line theory shows how finite aspect ratio creates induced drag and reduces effective angle of attack.",
+  "estimatedMinutes": 50,
+  "difficulty": "Core",
+  "keyEquations": [
+    {
+      "label": "Thin Airfoil Lift",
+      "latex": "c_l = 2\\pi (\\alpha - \\alpha_{L=0})",
+      "description": "Ideal lift slope 2π per radian for thin airfoils"
+    },
+    {
+      "label": "Finite Wing Lift Slope",
+      "latex": "a = \\frac{a_0}{1 + \\frac{a_0}{\\pi AR} (1 + \\tau)}",
+      "description": "Lifting line theory correction for 3D effects"
+    },
+    {
+      "label": "Induced Drag",
+      "latex": "C_{D,i} = \\frac{C_L^2}{\\pi AR e}",
+      "description": "Oswald efficiency e accounts for non-elliptical loading"
+    }
+  ],
+  "objectives": [
+    "Generate NACA 4-digit airfoil shapes and see camber/thickness effects",
+    "Apply thin airfoil theory to predict Cl vs α",
+    "Use lifting-line theory to compute finite-wing Cl, Cd_i for varying AR and taper",
+    "Understand why high AR wings have lower induced drag"
+  ],
+  "simulatorIds": ["airfoil-wing-lab"],
+  "simulatorRoute": "/simulators/airfoil-wing",
+  "tags": ["anderson", "airfoil", "lifting-line", "flagship"]
+}

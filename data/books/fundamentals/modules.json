@@ -1,0 +1,23 @@
+[
+  {
+    "id": "fundamentals-newton-momentum",
+    "bookId": "fundamentals",
+    "slug": "newtons-laws-momentum",
+    "title": "Newton's Laws & Conservation of Momentum",
+    "chapterRef": "Level 1 • Visual Foundations",
+    "summary": "Rockets fly because of action-reaction and conservation of momentum. Build rock-solid intuition with live visual experiments before any equations or books.",
+    "keyEquations": [],
+    "objectives": [
+      "See Newton's 3rd law in action with mass ejection",
+      "Understand conservation of momentum visually",
+      "Connect forces to acceleration with vectors",
+      "Experience why rockets work in vacuum"
+    ],
+    "simulatorIds": ["fundamentals-demo"],
+    "estimatedMinutes": 25,
+    "order": 1,
+    "levels": [1],
+    "prerequisites": [],
+    "crossConnections": []
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "lessonId": "nozzle-theory",
+  "title": "Nozzle Theory: Turning Heat into Speed",
+  "level": "Intermediate",
+  "learningObjectives": [
+    "Understand how a converging-diverging nozzle converts thermal energy into directed kinetic energy",
+    "Derive and apply the area-Mach relation for isentropic flow",
+    "Calculate thrust coefficient (CF) and specific impulse (Isp) from first principles",
+    "Classify nozzle flow regimes (ideal, under-, over-expanded) and their effects on performance",
+    "Design an optimum expansion ratio for a target altitude"
+  ],
+  "coreExplanation": "Imagine a balloon rocket. When you let go, air rushes out one way, and the balloon shoots the other. That's Newton's third law in action. A real rocket nozzle does the same thing, but with superheated gas at thousands of degrees and thousands of miles per hour.\n\nThe magic happens in the shape: a converging section squeezes the gas (like pinching a hose), then a diverging section lets it expand and accelerate even faster. This is the de Laval nozzle.\n\nAt the throat, the flow reaches the speed of sound (choked). After that, in the diverging part, it goes supersonic. The area ratio (exit area over throat area, called ε) determines the final speed and pressure of the exhaust.\n\nWhy does this matter? Because the faster and more efficiently you throw mass out the back, the more efficiently you go forward. Poor nozzle design wastes energy as heat or sideways thrust instead of pure forward push.",
+  "visualExplanations": [
+    {
+      "description": "Labeled cross-section of a de Laval nozzle showing converging, throat, diverging sections with flow arrows, Mach number increasing, pressure dropping.",
+      "imagePrompt": "Technical engineering diagram, dark background, clean white and cyan lines: cross-section of a rocket de Laval nozzle. Show converging section on left, narrow throat in middle, diverging bell on right. Label: Chamber (high P, low V), Throat (sonic, M=1), Exit (supersonic, low P). Add arrows for flow direction, color gradient from red (hot/high pressure) in chamber to blue (cool/fast) at exit. Subtle isentropic flow lines. Professional aerospace illustration style, high contrast, no text overflow. 16:9 aspect."
+    },
+    {
+      "description": "Three side-by-side diagrams: ideally expanded (straight plume), under-expanded (plume flares out with expansion waves), over-expanded (plume pinched with oblique shocks and separation).",
+      "imagePrompt": "Three panel technical illustration on dark background. Left: ideally expanded nozzle with clean cylindrical exhaust plume. Middle: under-expanded nozzle with exhaust flaring outward, Mach diamonds visible. Right: over-expanded nozzle with exhaust pinched inward, shock waves and possible flow separation at lip. Use red/cyan accents for waves. Label each: 'Ideal (pe=pa)', 'Under-expanded (pe>pa)', 'Over-expanded (pe<pa)'. Clean vector style, aerospace textbook quality."
+    }
+  ],
+  "interactiveSection": {
+    "simulatorId": "nozzle-theory",
+    "guidedPrompts": [
+      "Set sea level ambient (pa=1 bar) and increase ε from 5 to 50. Notice how Isp_sl peaks then drops while Isp_vac keeps rising.",
+      "Switch to vacuum (pa=0) and observe the plume always under-expands.",
+      "Try different propellants (change gamma and mol wt) and see effect on c* and Isp.",
+      "Look at the property distribution plot: how fast does Mach rise in the diverging section?"
+    ]
+  },
+  "reflectionAndChallenges": [
+    "If you are designing a booster that flies through sea level to 60 km, what single expansion ratio would you pick and why? What trade-offs?",
+    "Why does the area-Mach relation predict that you can never reach supersonic speeds in a purely converging nozzle?",
+    "In the lab, what happens to exit pressure pe as you increase ε at fixed pc? How does that relate to the plume visuals?"
+  ],
+  "commonMisconceptions": [
+    "Bigger nozzle is always better — No. Over-expansion at low altitude causes shock losses and can reduce thrust.",
+    "The nozzle 'squeezes' the gas to make it faster — Partially true in converging, but the real acceleration to supersonic happens in the diverging section through expansion.",
+    "Rockets need air to push against — False. They work best in vacuum. The nozzle pushes on the gas, the gas pushes back on the rocket (action-reaction)."
+  ],
+  "realWorldConnections": [
+    "SpaceX Merlin engines use a sea-level nozzle (ε ≈ 16) on the booster and a larger vacuum-optimized nozzle on the upper stage.",
+    "The Space Shuttle Main Engine had a very high expansion ratio (ε≈77) optimized for vacuum but suffered performance loss if used at sea level.",
+    "Nozzle design is a major reason why first-stage engines look 'stubby' and upper-stage engines have huge bells."
+  ],
+  "nextSteps": [
+    "Take the Isp and CF values you measured in the lab and plug them into a Rocket Forge configuration for a single-stage vehicle.",
+    "Go to the Compressible Flow Lab and see how the same pressure ratios appear as normal/oblique shocks when the nozzle is over-expanded at low altitude.",
+    "In Rocket Forge, try designing a two-stage rocket where the first stage uses a low-ε nozzle and the second uses high-ε, and observe the effect on total Δv."
+  ],
+  "videoStoryboards": [
+    {
+      "title": "How a de Laval Nozzle Works",
+      "description": "30-45 second animation showing gas particles accelerating through converging-diverging nozzle, color coded by speed and temperature.",
+      "storyboardPrompt": "Cinematic 3D animation, dark space background with subtle grid. Start inside combustion chamber: red glowing gas particles slow and dense. As they enter converging section, they speed up, turn cyan. At throat they reach white sonic speed. In diverging bell they expand rapidly, become blue supersonic, shooting out as a tight high-speed beam. Add labels fading in: 'Thermal energy', 'Sonic throat', 'Supersonic expansion'. Smooth camera move from side cross-section to 3/4 view of full nozzle firing. High quality, engineering visualization style, 16:9, 30-45 seconds."
+    }
+  ],
+  "estimatedMinutes": 45,
+  "tags": ["propulsion", "nozzle", "sutton", "intermediate", "core"]
+}

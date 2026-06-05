@@ -1,0 +1,22 @@
+{
+  "id": "fundamentals",
+  "slug": "rocket-science-from-scratch",
+  "title": "Rocket Science from Scratch",
+  "subtitle": "Foundations for Complete Beginners",
+  "author": "Project Rocket Science",
+  "year": 2026,
+  "description": "A progressive, visual-first introduction to the core principles behind every rocket. No prior aerospace knowledge required. Builds intuition before diving into Sutton and Anderson.",
+  "phase": "Integrated Foundations — Phase 2.5",
+  "totalModules": 7,
+  "estimatedHours": 4,
+  "accent": "#E30613",
+  "concepts": [
+    "Newton's Laws & Momentum",
+    "Conservation Principles",
+    "Rocket Equation Basics",
+    "Propulsion Intuition",
+    "Aerodynamics Intuition",
+    "Staging Concepts",
+    "Mission Thinking"
+  ]
+}

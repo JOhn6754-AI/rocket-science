@@ -1,0 +1,146 @@
+[
+  {
+    "id": "anderson-01",
+    "bookId": "anderson-foa-5e",
+    "slug": "inviscid-incompressible",
+    "title": "Inviscid Incompressible Flow",
+    "chapterRef": "Chapters 2–4",
+    "summary": "Potential flow, circulation, and the foundations of lift. Kutta-Joukowski theorem in action before viscosity enters the picture.",
+    "keyEquations": [
+      { "id": "a1", "latex": "L' = \\rho_\\infty V_\\infty \\Gamma", "description": "Kutta-Joukowski lift per unit span" }
+    ],
+    "objectives": [
+      "Apply Bernoulli along streamlines",
+      "Solve Laplace equation for flow over cylinders",
+      "Connect circulation to lift generation"
+    ],
+    "simulatorIds": ["airfoil-wing-lab", "drag-polar"],
+    "estimatedMinutes": 40,
+    "order": 1
+  },
+  {
+    "id": "anderson-shocks-expansions",
+    "bookId": "anderson-foa-5e",
+    "slug": "shocks-expansions",
+    "title": "Oblique Shocks & Prandtl-Meyer Expansions",
+    "chapterRef": "Chapters 8–9",
+    "summary": "When flow turns through a compression corner an oblique shock forms. Through an expansion corner a centered expansion fan (Prandtl-Meyer) smoothly accelerates and turns the flow.",
+    "keyEquations": [
+      { "id": "a1", "latex": "\\tan\\theta = 2\\cot\\beta \\frac{M_1^2 \\sin^2\\beta - 1}{M_1^2(\\gamma + \\cos 2\\beta) + 2}", "description": "θ-β-M relation for oblique shocks" },
+      { "id": "a2", "latex": "\\nu(M) = \\sqrt{\\frac{\\gamma+1}{\\gamma-1}} \\tan^{-1}\\sqrt{\\frac{\\gamma-1}{\\gamma+1}(M^2-1)} - \\tan^{-1}\\sqrt{M^2-1}", "description": "Prandtl-Meyer turning function" }
+    ],
+    "objectives": [
+      "Solve oblique shock properties for wedges",
+      "Visualize shock/expansion fans",
+      "Compare normal vs oblique vs isentropic turning"
+    ],
+    "simulatorIds": ["compressible-flow-lab"],
+    "estimatedMinutes": 55,
+    "order": 2,
+    "levels": [4, 6],
+    "prerequisites": ["anderson-02"],
+    "crossConnections": [
+      { "bookId": "sutton-rpe-9e", "moduleId": "sutton-nozzle-theory", "description": "Nozzle exit pressure (Sutton) determines shock/expansion losses in atmosphere (Anderson)" }
+    ]
+  },
+  {
+    "id": "anderson-03",
+    "bookId": "anderson-foa-5e",
+    "slug": "boundary-layers",
+    "title": "Boundary Layer Theory",
+    "chapterRef": "Chapters 15–17",
+    "summary": "The thin viscous layer that makes or breaks aircraft and rockets. Laminar vs turbulent, separation, and skin friction drag.",
+    "keyEquations": [
+      { "id": "a1", "latex": "\\delta / x \\approx 5 / \\sqrt{Re_x}", "description": "Blasius flat plate boundary layer thickness" }
+    ],
+    "objectives": [
+      "Estimate skin friction on a rocket body",
+      "Understand transition and its drag penalty",
+      "Predict separation on an adverse gradient"
+    ],
+    "simulatorIds": ["airfoil-wing-lab", "drag-polar"],
+    "estimatedMinutes": 50,
+    "order": 3,
+    "levels": [4],
+    "prerequisites": ["anderson-01"],
+    "crossConnections": [
+      { "bookId": "sutton-rpe-9e", "moduleId": "sutton-thrust-performance", "description": "Induced drag is a major Δv loss that the propulsion system (Sutton) must overcome" }
+    ]
+  },
+  {
+    "id": "anderson-airfoils-finite-wings",
+    "bookId": "anderson-foa-5e",
+    "slug": "airfoils-finite-wings",
+    "title": "Airfoils & Finite Wing Theory",
+    "chapterRef": "Chapters 4–5, 9 (Thin Airfoil & Lifting Line)",
+    "summary": "Thin airfoil theory gives the foundation for Cl(α) and the Kutta condition. Prandtl's lifting-line theory shows how finite aspect ratio creates induced drag and reduces effective angle of attack.",
+    "keyEquations": [
+      { "id": "a1", "latex": "c_l = 2\\pi (\\alpha - \\alpha_{L=0})", "description": "Ideal lift slope 2π per radian for thin airfoils" },
+      { "id": "a2", "latex": "C_{D,i} = \\frac{C_L^2}{\\pi AR e}", "description": "Induced drag coefficient" }
+    ],
+    "objectives": [
+      "Generate NACA 4-digit airfoil shapes",
+      "Apply thin airfoil + lifting line theory",
+      "See AR and taper effects on induced drag"
+    ],
+    "simulatorIds": ["airfoil-wing-lab"],
+    "estimatedMinutes": 50,
+    "order": 4
+  },
+  {
+    "id": "anderson-05",
+    "bookId": "anderson-foa-5e",
+    "slug": "drag-polar",
+    "title": "Drag Polar & Performance",
+    "chapterRef": "Chapter 13",
+    "summary": "The single most useful plot in aerodynamics: C_D vs C_L. How to read L/D max and its direct impact on range and glide.",
+    "keyEquations": [],
+    "objectives": [
+      "Build realistic drag polars from component buildup",
+      "Find (L/D)max and its flight condition",
+      "Apply to rocket booster reentry or booster return"
+    ],
+    "simulatorIds": ["airfoil-wing-lab", "drag-polar"],
+    "estimatedMinutes": 30,
+    "order": 5
+  },
+  {
+    "id": "anderson-06",
+    "bookId": "anderson-foa-5e",
+    "slug": "hypersonics",
+    "title": "Hypersonic Aerodynamics",
+    "chapterRef": "Chapter 14, 18",
+    "summary": "Newtonian theory, high-temperature effects, and the extreme environment faced by reentry vehicles and boost-glide weapons.",
+    "keyEquations": [],
+    "objectives": [],
+    "simulatorIds": [],
+    "estimatedMinutes": 35,
+    "order": 6
+  },
+  {
+    "id": "anderson-07",
+    "bookId": "anderson-foa-5e",
+    "slug": "viscous-interactions",
+    "title": "Viscous Interactions & Real Gas",
+    "chapterRef": "Advanced sections",
+    "summary": "When the boundary layer and shock layer talk to each other at Mach 10+.",
+    "keyEquations": [],
+    "objectives": [],
+    "simulatorIds": [],
+    "estimatedMinutes": 25,
+    "order": 7
+  },
+  {
+    "id": "anderson-08",
+    "bookId": "anderson-foa-5e",
+    "slug": "applied-to-rockets",
+    "title": "Applied Aerodynamics for Rockets",
+    "chapterRef": "Synthesis",
+    "summary": "Putting it together: ascent loads, base drag, staging aerodynamics, and booster return (Falcon 9, Starship).",
+    "keyEquations": [],
+    "objectives": [],
+    "simulatorIds": ["drag-polar", "stage-optimizer"],
+    "estimatedMinutes": 40,
+    "order": 8
+  }
+]

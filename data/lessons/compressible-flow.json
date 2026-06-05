@@ -1,0 +1,60 @@
+{
+  "lessonId": "compressible-flow",
+  "title": "Compressible Flow: Shocks, Expansions, and Supersonic Magic",
+  "level": "Intermediate",
+  "learningObjectives": [
+    "Calculate property jumps across normal shocks using the normal shock relations",
+    "Solve the θ-β-M relation for oblique shocks on wedges and cones",
+    "Use the Prandtl-Meyer function to find flow properties after an expansion fan",
+    "Explain why shocks are irreversible (entropy increase) while Prandtl-Meyer expansions are isentropic"
+  ],
+  "coreExplanation": "At low speeds, air is basically incompressible — density doesn't change much. But when the flow approaches or exceeds the speed of sound, compressing or expanding the gas changes its density, temperature, and pressure dramatically.\n\nA supersonic flow hitting a sudden compression (like the nose of a wedge) can't 'know' what's coming because pressure signals travel at the speed of sound. The information piles up into a shock wave. Across the shock, pressure, temperature, and density jump upward; velocity and Mach number drop.\n\nIf the flow turns away from itself (convex corner), it can expand smoothly through a fan of Mach waves — a Prandtl-Meyer expansion. Pressure, temperature, and density drop; velocity and Mach increase. No shock, no entropy increase.\n\nThis is why supersonic inlets, nozzles, and reentry vehicles look the way they do: they are carefully shaped to create the right pattern of shocks and expansions to slow or accelerate the flow without destroying too much total pressure.",
+  "visualExplanations": [
+    {
+      "description": "Diagram of a wedge in supersonic flow showing the oblique shock wave at angle β, flow deflected by θ after the shock, with regions labeled 1 (freestream) and 2 (post-shock).",
+      "imagePrompt": "Technical 2D diagram, dark background. Sharp wedge pointing left into horizontal supersonic flow lines (cyan). A straight oblique shock line emanates from the wedge tip at angle β from the flow. After the shock, flow lines are deflected downward by angle θ. Label freestream M1, post-shock M2 < M1, β, θ. Pressure jump shown with color: light before, darker after. Clean vector art, red/cyan, aerospace textbook style."
+    },
+    {
+      "description": "Convex corner with a fan of Mach waves (characteristic lines) spreading from the corner, flow turning gradually through the fan with increasing Mach number.",
+      "imagePrompt": "Clean diagram of a 90-degree convex corner. Supersonic flow from left. At the corner, a series of straight Mach lines fan out at increasing angles. Flow turns smoothly around the corner. Color gradient from cyan (M1) to deeper blue (higher M2) across the fan. Label the first and last characteristic, turning angle ν. Professional, high-contrast illustration on dark bg."
+    }
+  ],
+  "interactiveSection": {
+    "simulatorId": "compressible-flow",
+    "guidedPrompts": [
+      "Fix M1=2.0, increase wedge angle θ from 0 to 20°. Watch β increase and the post-shock M2 drop.",
+      "At the same M1, compare a normal shock (θ=0 effectively) vs oblique shock at θ=10°. Note how much weaker the oblique shock is (smaller p2/p1).",
+      "Switch to Prandtl-Meyer mode. Increase turning angle. See M2 rise and pressure ratio fall — all isentropically.",
+      "Look at the p2/p1 curve vs deflection. At high enough θ the shock detaches (no attached oblique solution)."
+    ]
+  },
+  "reflectionAndChallenges": [
+    "For a given M1, is the total pressure loss higher for a normal shock or an oblique shock with the same deflection? Why?",
+    "Why are Prandtl-Meyer expansions isentropic while shocks are not? What does that mean for nozzle design?",
+    "A supersonic inlet designer wants to slow M=2.5 air to M=0.5 for the engine. Compare a single normal shock vs a series of two oblique shocks + one normal. Which has less loss?"
+  ],
+  "commonMisconceptions": [
+    "Shocks are just like sound waves but louder — No. Normal shocks are extremely thin (a few mean free paths) and produce large, irreversible jumps in entropy and total pressure loss.",
+    "You can expand or compress supersonically the same way — Compression through a shock is sudden and lossy; expansion through a fan is gradual and lossless (isentropic).",
+    "All supersonic inlets use shocks to slow the flow — Yes, but good ones use multiple oblique shocks or isentropic compression to minimize total pressure loss compared to a single normal shock."
+  ],
+  "realWorldConnections": [
+    "The SR-71 inlet used a complex system of oblique shocks and a translating spike to slow air from Mach 3+ to subsonic for the engines with minimal losses.",
+    "Rocket nozzles that are over-expanded at sea level (like many first-stage engines) have oblique shocks inside or at the lip that can cause flow separation and side loads.",
+    "Hypersonic vehicles like the X-43 or proposed boost-glide weapons are shaped to ride on their own shock waves (wave-riding)."
+  ],
+  "nextSteps": [
+    "In the Nozzle Lab, set a high ε and low altitude (high pa). Observe the over-expanded plume and the shock structure inside it.",
+    "In Rocket Forge, design a hypersonic first stage or reentry vehicle and note how wave drag from the compressible lab would affect your Cd.",
+    "Explore how staging at high altitude lets you use higher-ε nozzles without the over-expansion penalty at sea level."
+  ],
+  "videoStoryboards": [
+    {
+      "title": "Shock vs Expansion: Compression vs Turning Away",
+      "description": "Side-by-side animation of flow hitting a wedge (shock) vs turning around a corner (expansion fan), showing property changes.",
+      "storyboardPrompt": "Split screen animation. Left side: supersonic flow (particles moving fast) hits a 10° wedge. A sharp oblique shock forms; particles suddenly slow, compress, temperature jumps (color from cyan to yellow). Right side: same flow encounters a convex 10° corner. A fan of lines spreads; particles gradually speed up, expand, cool (cyan to deep blue). Labels for p, T, M, entropy change on each side. Dark bg, particle traces, 16:9, 40s."
+    }
+  ],
+  "estimatedMinutes": 55,
+  "tags": ["aerodynamics", "compressible", "anderson", "intermediate", "core"]
+}

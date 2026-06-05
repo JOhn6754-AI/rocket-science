@@ -1,0 +1,275 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* KaTeX for beautiful equations */
+@import "katex/dist/katex.min.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================
+   PROJECT ROCKET SCIENCE — SPACEX-INSPIRED THEME (Phase 1)
+   Extremely dark (#0a0a0a / #111111)
+   Primary action: SpaceX Red (#E30613)
+   Data / interactive: Electric Cyan (#00d4ff)
+   Mission-control aesthetic: bold, minimal, high-impact, cinematic
+============================================ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* Aerospace color tokens */
+:root {
+  /* Extremely dark SpaceX-inspired palette */
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+
+  --card: #111111;
+  --card-foreground: #f5f5f5;
+
+  --popover: #111111;
+  --popover-foreground: #f5f5f5;
+
+  /* Primary action — SpaceX Red */
+  --primary: #E30613;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1a1a1a;
+  --secondary-foreground: #e5e5e5;
+
+  --muted: #1a1a1a;
+  --muted-foreground: #888888;
+
+  --accent: #111111;
+  --accent-foreground: #f5f5f5;
+
+  --destructive: #E30613;
+  --destructive-foreground: #ffffff;
+
+  --border: #222222;
+  --input: #1f1f1f;
+  --ring: #00d4ff;
+
+  --radius: 0.5rem;
+
+  /* Data & interactive highlights — electric cyan */
+  --accent-cyan: #00d4ff;
+  --accent-cyan-dark: #00a8cc;
+  --accent-red: #E30613;
+
+  /* Subtle engineering glows */
+  --glow-red: 0 0 0 1px rgba(227, 6, 19, 0.35);
+  --glow-cyan: 0 0 0 1px rgba(0, 212, 255, 0.35);
+
+  /* Recharts mission-control palette */
+  --chart-1: #00d4ff;
+  --chart-2: #E30613;
+  --chart-3: #a1a1aa;
+  --chart-4: #f4a261;
+  --chart-5: #4ade80;
+
+  /* Sidebar / nav */
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #d1d1d1;
+  --sidebar-primary: #E30613;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1a1a1a;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #222222;
+  --sidebar-ring: #00d4ff;
+}
+
+/* Force extremely dark SpaceX experience */
+.dark,
+html {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-[#0a0a0a] text-[#f5f5f5];
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+
+  /* Strong cinematic typography */
+  h1, .display {
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+
+  /* KaTeX — mission control equations */
+  .katex {
+    color: #f5f5f5 !important;
+  }
+  .katex-display {
+    padding: 1rem 1.5rem;
+    margin: 1.25rem 0;
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 6px;
+  }
+
+  /* Dashboard / engineering card style */
+  .mission-card {
+    @apply bg-[#111111] border border-[#222222] rounded-lg transition-colors;
+  }
+  .mission-card:hover {
+    border-color: #333333;
+  }
+
+  .mission-panel {
+    @apply bg-[#111111] border border-[#222222] rounded-lg;
+  }
+
+  /* Readout style (Isp, CF, Mach etc) */
+  .readout {
+    font-family: var(--font-geist-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .readout-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #888888;
+  }
+
+  /* SpaceX-style primary action */
+  .btn-primary {
+    @apply bg-[#E30613] text-white font-medium rounded-md px-6 py-2.5 transition-all active:scale-[0.985] hover:brightness-110;
+  }
+  .btn-secondary {
+    @apply bg-[#1a1a1a] text-[#f5f5f5] border border-[#333333] font-medium rounded-md px-5 py-2 transition hover:bg-[#222222];
+  }
+  .btn-ghost {
+    @apply text-[#d1d1d1] hover:text-white hover:bg-[#1a1a1a] rounded-md px-4 py-1.5 text-sm;
+  }
+
+  /* Data accent (cyan) for interactive elements */
+  .data-accent {
+    color: #00d4ff;
+  }
+  .slider-cyan [data-slot="slider-track"] {
+    background: #222222;
+  }
+  .slider-cyan [data-slot="slider-range"] {
+    background: #00d4ff;
+  }
+  .slider-cyan [data-slot="slider-thumb"] {
+    background: #00d4ff;
+    border: 2px solid #0a0a0a;
+  }
+
+  /* Simulator / lab container — feels like a console */
+  .lab-container {
+    @apply bg-[#111111] border border-[#222222] rounded-xl;
+  }
+  .lab-header {
+    @apply border-b border-[#222222] px-6 py-4 flex items-center justify-between bg-[#0a0a0a];
+  }
+
+  /* Flow regime badges */
+  .regime-badge {
+    @apply inline-flex items-center rounded px-3 py-1 text-xs font-medium tracking-wider;
+  }
+  .regime-ideally { background: #052e16; color: #4ade80; border: 1px solid #166534; }
+  .regime-under { background: #1e3a8a; color: #60a5fa; border: 1px solid #1e40af; }
+  .regime-over { background: #431407; color: #fb923c; border: 1px solid #9a3412; }
+
+  /* Nozzle visualization */
+  .nozzle-svg {
+    filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.4));
+  }
+
+  /* Focus */
+  :focus-visible {
+    @apply outline-none ring-2 ring-[#00d4ff]/60 ring-offset-2 ring-offset-[#0a0a0a];
+  }
+
+  /* Subtle grid for engineering sections */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+}
+
+/* Recharts dark mission-control theme */
+.recharts-text { fill: #888888 !important; }
+.recharts-cartesian-axis-line,
+.recharts-cartesian-grid line { stroke: #222222; }
+.recharts-line { stroke-width: 2.5; }
+.recharts-dot { fill: #00d4ff; stroke: #0a0a0a; }
+
+/* Recharts dark theme overrides */
+.recharts-text {
+  fill: #94a3b8 !important;
+}
+.recharts-cartesian-axis-line,
+.recharts-cartesian-grid line {
+  stroke: #1e2937;
+}
+
+/* Nice scrollbars for long module lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

@@ -1,0 +1,17 @@
+# Cloudflare Pages + Wrangler configuration for Project Rocket Science
+# Phase 0 — fully static export
+
+name = "rocket-science"
+compatibility_date = "2025-06-01"
+
+[build]
+command = "npm run build"
+cwd = "."
+
+[pages_build_output_dir] = "out"
+
+# If you later move to full SSR with @cloudflare/next-on-pages:
+# [build]
+# command = "npx @cloudflare/next-on-pages"
+# 
+# Then remove `output: "export"` from next.config.ts

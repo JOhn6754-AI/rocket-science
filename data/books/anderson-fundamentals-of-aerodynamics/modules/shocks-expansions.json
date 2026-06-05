@@ -1,0 +1,38 @@
+{
+  "id": "anderson-shocks-expansions",
+  "bookId": "anderson-foa-5e",
+  "slug": "shocks-expansions",
+  "title": "Oblique Shocks & Prandtl-Meyer Expansions",
+  "chapterRef": "Chapters 8–9",
+  "order": 6,
+  "summary": "When flow turns through a compression corner an oblique shock forms. Through an expansion corner a centered expansion fan (Prandtl-Meyer) smoothly accelerates and turns the flow. These are the building blocks of supersonic aerodynamics and inlets/nozzles.",
+  "estimatedMinutes": 55,
+  "difficulty": "Core",
+  "keyEquations": [
+    {
+      "label": "Oblique Shock θ-β-M Relation",
+      "latex": "\\tan\\theta = 2\\cot\\beta \\frac{M_1^2 \\sin^2\\beta - 1}{M_1^2(\\gamma + \\cos 2\\beta) + 2}",
+      "description": "Relates shock wave angle β to flow deflection θ"
+    },
+    {
+      "label": "Prandtl-Meyer Function",
+      "latex": "\\nu(M) = \\sqrt{\\frac{\\gamma+1}{\\gamma-1}} \\tan^{-1}\\sqrt{\\frac{\\gamma-1}{\\gamma+1}(M^2-1)} - \\tan^{-1}\\sqrt{M^2-1}",
+      "description": "Turning angle through expansion fan"
+    },
+    {
+      "label": "Normal Shock Pressure Jump",
+      "latex": "\\frac{p_2}{p_1} = 1 + \\frac{2\\gamma}{\\gamma+1}(M_1^2 - 1)",
+      "description": "Strongest possible pressure rise for given M1"
+    }
+  ],
+  "objectives": [
+    "Solve the θ-β-M relation for oblique shocks on wedges",
+    "Visualize shock angle β and flow deflection for different M and θ",
+    "Compute property jumps across normal and oblique shocks",
+    "Understand isentropic turning via Prandtl-Meyer expansion fans",
+    "See why expansions are isentropic while shocks are not"
+  ],
+  "simulatorIds": ["compressible-flow-lab"],
+  "simulatorRoute": "/simulators/compressible-flow",
+  "tags": ["anderson", "compressible", "shocks", "prandtl-meyer", "flagship"]
+}

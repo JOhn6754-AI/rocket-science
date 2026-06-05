@@ -1,0 +1,37 @@
+{
+  "id": "anderson-foa-5e",
+  "slug": "anderson-fundamentals-of-aerodynamics",
+  "title": "Fundamentals of Aerodynamics",
+  "subtitle": "5th Edition",
+  "author": "John D. Anderson Jr.",
+  "year": 2010,
+  "description": "The definitive text on aerodynamics. Master thin airfoil theory, finite wings, and compressible flow through interactive analysis tools.",
+  "phase": "Anderson Core — Phase 2",
+  "totalModules": 8,
+  "estimatedHours": 19,
+  "accent": "#E30613",
+  "learningPath": [
+    {
+      "phase": "Incompressible Flow",
+      "modules": ["inviscid-incompressible", "airfoils-finite-wings"]
+    },
+    {
+      "phase": "Compressible Flow",
+      "modules": ["compressible-flow", "shocks-expansions"]
+    },
+    {
+      "phase": "Viscous & Applied",
+      "modules": ["boundary-layers", "drag-polar", "hypersonics", "applied-to-rockets"]
+    }
+  ],
+  "concepts": [
+    "Inviscid Incompressible Flow",
+    "Compressible Flow & Shocks",
+    "Boundary Layer Theory",
+    "Drag & Lift Polars",
+    "Thin Airfoil Theory",
+    "Finite Wing Theory",
+    "Hypersonic Aerodynamics",
+    "Viscous Interactions"
+  ]
+}

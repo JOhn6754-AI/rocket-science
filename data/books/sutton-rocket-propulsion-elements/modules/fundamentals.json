@@ -1,0 +1,31 @@
+{
+  "id": "sutton-fundamentals",
+  "bookId": "sutton-rpe-9e",
+  "slug": "fundamentals-of-rocket-propulsion",
+  "title": "Fundamentals of Rocket Propulsion",
+  "chapterRef": "Chapter 1",
+  "order": 1,
+  "summary": "Thrust is momentum exchange. Understand the rocket equation, propellant mass fraction, and why Isp and mass ratio dominate mission capability.",
+  "estimatedMinutes": 35,
+  "difficulty": "Foundational",
+  "keyEquations": [
+    {
+      "label": "Tsiolkovsky Rocket Equation",
+      "latex": "\\Delta v = v_e \\ln \\left( \\frac{m_0}{m_f} \\right)",
+      "description": "Ideal velocity change from propellant expenditure"
+    },
+    {
+      "label": "Thrust Equation",
+      "latex": "F = \\dot{m} v_e + (p_e - p_a) A_e",
+      "description": "Momentum thrust + pressure thrust"
+    }
+  ],
+  "objectives": [
+    "Derive thrust from first principles (control volume)",
+    "Connect specific impulse to effective exhaust velocity",
+    "Calculate required mass ratio for a given Δv"
+  ],
+  "simulatorId": null,
+  "simulatorRoute": "/simulators",
+  "tags": ["foundational"]
+}

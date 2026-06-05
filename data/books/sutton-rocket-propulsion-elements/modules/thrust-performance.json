@@ -1,0 +1,31 @@
+{
+  "id": "sutton-thrust-performance",
+  "bookId": "sutton-rpe-9e",
+  "slug": "thrust-and-performance",
+  "title": "Thrust, c*, and Performance Parameters",
+  "chapterRef": "Chapter 2–3",
+  "order": 3,
+  "summary": "c* measures combustion performance independent of nozzle. CF measures nozzle contribution. Together they determine delivered Isp.",
+  "estimatedMinutes": 40,
+  "difficulty": "Core",
+  "keyEquations": [
+    {
+      "label": "Characteristic Velocity",
+      "latex": "c^* = \\frac{p_c A_t}{\\dot{m}}",
+      "description": "Figure of merit for the combustor"
+    },
+    {
+      "label": "Isp Definition",
+      "latex": "I_{sp} = \\frac{F}{\\dot{m} g_0} = \\frac{C_F \\cdot c^*}{g_0}",
+      "description": "The single most important performance number"
+    }
+  ],
+  "objectives": [
+    "Separate combustor performance (c*) from nozzle performance (CF)",
+    "Predict how chamber pressure and nozzle design trade",
+    "Understand why vacuum Isp is always higher than sea-level Isp"
+  ],
+  "simulatorId": "nozzle-theory-lab",
+  "simulatorRoute": "/simulators/nozzle-theory",
+  "tags": ["performance", "c-star"]
+}

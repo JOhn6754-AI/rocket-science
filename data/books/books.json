@@ -1,0 +1,98 @@
+{
+  "version": "1.0",
+  "description": "Master index for all space/aerospace books in Project Rocket Science. Used for systematic ingestion of the 9+ PDFs in SPACE BOOKS collection.",
+  "books": [
+    {
+      "slug": "sutton-rocket-propulsion-elements",
+      "title": "Rocket Propulsion Elements",
+      "author": "George P. Sutton, Oscar Biblarz",
+      "edition": "9th",
+      "year": 2016,
+      "pdf": "Rocket Propulsion Elements.pdf",
+      "status": "core",
+      "lessons": ["nozzle-theory", "rocket-equation", "staging"],
+      "simulators": ["nozzle-theory-lab"]
+    },
+    {
+      "slug": "anderson-fundamentals-of-aerodynamics",
+      "title": "Fundamentals of Aerodynamics",
+      "author": "John D. Anderson Jr.",
+      "edition": "5th",
+      "year": 2010,
+      "pdf": "FundamentalsAerodynamics.pdf",
+      "status": "core",
+      "lessons": ["airfoil-fundamentals", "compressible-flow"],
+      "simulators": ["airfoil-wing-lab", "compressible-flow-lab"]
+    },
+    {
+      "slug": "fundamentals-of-astrodynamics",
+      "title": "Fundamentals of Astrodynamics",
+      "author": "Bate, Mueller, White",
+      "edition": "",
+      "year": 1971,
+      "pdf": "Bate, Mueller, and White - Fundamentals of Astrodynamics.pdf",
+      "status": "planned",
+      "lessons": [],
+      "simulators": []
+    },
+    {
+      "slug": "orbital-mechanics-engineering-students",
+      "title": "Orbital Mechanics for Engineering Students",
+      "author": "Howard D. Curtis",
+      "edition": "",
+      "year": 2010,
+      "pdf": "Curtis_OrbitamMechForEngineeringStudents.pdf",
+      "status": "planned",
+      "lessons": [],
+      "simulators": []
+    },
+    {
+      "slug": "space-vehicle-dynamics-control",
+      "title": "Space Vehicle Dynamics and Control",
+      "author": "",
+      "edition": "",
+      "year": null,
+      "pdf": "Space Vehicle Dynamics and Control.pdf",
+      "status": "planned",
+      "lessons": [],
+      "simulators": []
+    },
+    {
+      "slug": "space-mission-analysis-design",
+      "title": "Space Mission Analysis and Design (SMAD)",
+      "author": "Wertz, Larson et al.",
+      "edition": "",
+      "year": null,
+      "pdf": "SpaceMissionAnalysisAndDesignBook.pdf",
+      "status": "planned",
+      "lessons": [],
+      "simulators": []
+    },
+    {
+      "slug": "nasa-systems-engineering-handbook",
+      "title": "NASA Systems Engineering Handbook",
+      "author": "NASA",
+      "edition": "",
+      "year": null,
+      "pdf": "nasa_systems_engineering_handbook_0.pdf",
+      "status": "planned",
+      "lessons": [],
+      "simulators": []
+    }
+  ],
+  "ingestProcess": {
+    "steps": [
+      "1. Place PDF in known location (e.g. ~/SPACE BOOKS or Downloads)",
+      "2. Run or manually create data/books/<slug>/book.json with metadata from books.json",
+      "3. Extract key chapters/sections relevant to rocket science (use LLM or manual)",
+      "4. Create 1-3 lessons per major topic in data/lessons/ or data/books/<slug>/lessons/",
+      "5. For each lesson, write content following Lesson template in types.ts",
+      "6. Generate image prompts and video storyboards (see list at end of Phase 4)",
+      "7. Link lesson to existing or new simulators via simulatorSlug",
+      "8. Update curriculum.ts levels to include new lesson ids",
+      "9. Add visuals to public/ or use generated URLs",
+      "10. Test by visiting /lessons/<slug> and /learn"
+    ],
+    "notes": "Start with core propulsion and aero books (Sutton, Anderson). Then add astrodynamics (Bate/Curtis), vehicle dynamics, SMAD, NASA handbook. Lessons should cross-reference books where concepts overlap (e.g. propulsion + aero for ascent)."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "lessonId": "rocket-equation",
+  "title": "The Rocket Equation: Why Mass Ratio Rules Everything",
+  "level": "Beginner",
+  "learningObjectives": [
+    "Derive the ideal rocket equation (Tsiolkovsky) from conservation of momentum",
+    "Understand why Isp and mass ratio are the only two things that matter for delta-v",
+    "Calculate propellant mass fraction and see why rockets are mostly tanks",
+    "Explain gravity and drag losses and why they make real delta-v higher than ideal"
+  ],
+  "coreExplanation": "Picture two ice skaters standing on frictionless ice, holding a heavy ball. One throws the ball to the left. To conserve momentum, the thrower moves right.\n\nNow imagine the 'ball' is a tiny bit of propellant, thrown at 3000 m/s. The 'skater' is the rocket. Every time you throw a little mass backward very fast, the rocket moves forward a little.\n\nDo this millions of times with a huge tank of propellant, and you can reach orbital speeds.\n\nThe math is simple: the change in velocity (Δv) equals exhaust velocity (ve, which is Isp × g0) times the natural log of the mass ratio (initial mass / final mass after burning propellant).\n\nΔv = ve * ln(m0 / mf)\n\nThat's it. No other variables. If you want more Δv, either make ve higher (better Isp, harder) or make m0/mf larger (more propellant, bigger tanks, harder). This is why rockets look the way they do: 80-90% propellant by mass.",
+  "visualExplanations": [
+    {
+      "description": "Stacked bar showing typical rocket mass breakdown: 85% propellant (blue), 10% structure/tanks (gray), 5% payload/engines (red). Arrow showing how ln(m0/mf) gives the multiplier on Isp*g0.",
+      "imagePrompt": "Clean infographic on dark background. Vertical stacked bar labeled 'Typical Rocket Mass'. Bottom 85% bright cyan 'Propellant'. Middle 10% dark gray 'Structure + Engines'. Top 5% orange 'Payload'. To the right, equation Δv = ve × ln(m0/mf) with arrows showing m0 at bottom of bar, mf at top. Small callout 'Every extra % of propellant gives exponential more Δv'. Professional, minimal, high contrast, aerospace poster style."
+    }
+  ],
+  "interactiveSection": {
+    "simulatorId": "fundamentals",
+    "guidedPrompts": [
+      "In the momentum demo, eject many packets and watch rocket velocity increase while total system momentum stays near zero.",
+      "In Rocket Forge, set a single stage with 90% propellant fraction. Note the huge ideal Δv even with modest Isp.",
+      "Reduce propellant to 50%. See how Δv collapses. This is why staging exists.",
+      "Try the same vehicle with Isp 250 vs 350. See the linear effect of Isp vs the exponential effect of mass ratio."
+    ]
+  },
+  "reflectionAndChallenges": [
+    "A rocket has m0 = 500,000 kg, mf = 50,000 kg, Isp = 300 s. Calculate ideal Δv. Now suppose 10% of 'dry' mass is actually unusable residual propellant. Recalculate. How big is the hit?",
+    "Why do upper stages always have higher Isp than boosters, even if they use similar propellants?",
+    "If you could magically double Isp without changing anything else, how much less propellant would you need for the same Δv to LEO (~9.5 km/s ideal)?"
+  ],
+  "commonMisconceptions": [
+    "Rockets push against the ground or air — No. They work in vacuum. The push is internal: propellant vs rocket.",
+    "You need more thrust than weight to go to space — You need it to lift off the pad, but once moving, you can have T/W <1 and still gain speed (just slower).",
+    "Bigger engines always give more speed — Thrust affects acceleration rate, not final Δv. Final speed is set by Isp and mass ratio."
+  ],
+  "realWorldConnections": [
+    "Falcon 9 first stage is ~78% propellant by mass at liftoff. The second stage is even higher fraction.",
+    "The reason we stage is that carrying empty tanks all the way is devastating to mass ratio. Dropping them multiplies the effective ratio.",
+    "Nuclear thermal rockets (NERVA, DRACO) aim for Isp ~900s. Same mass ratio, 3x the Δv of chemical."
+  ],
+  "nextSteps": [
+    "Build the same vehicle in Rocket Forge with realistic gravity + drag losses turned on. See how much 'free' Δv disappears.",
+    "Design a 2-stage version. Drop the first stage empty mass. Watch total Δv jump dramatically.",
+    "In the Nozzle Lab, change propellant and expansion ratio to maximize Isp for vacuum. Bring those numbers back to Forge."
+  ],
+  "videoStoryboards": [
+    {
+      "title": "Why Rockets Are 90% Fuel",
+      "description": "Animation showing a rocket 'eating' its own mass as it climbs, with the equation updating live and final velocity shown.",
+      "storyboardPrompt": "2D side view animation, black background, rocket silhouette ascending. Start full height with tall blue propellant bar inside. As it 'burns', blue bar shrinks from bottom, rocket gets shorter. Velocity number climbs on right, following ve * ln(initial mass / current mass). At end, tiny rocket at top with small red payload. Text overlays explain exponential nature. Clean, modern motion graphics, 16:9, 40 seconds."
+    }
+  ],
+  "estimatedMinutes": 35,
+  "tags": ["fundamentals", "rocket-equation", "sutton", "beginner", "core"]
+}

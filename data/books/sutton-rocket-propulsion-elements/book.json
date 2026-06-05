@@ -1,0 +1,42 @@
+{
+  "id": "sutton-rpe-9e",
+  "slug": "sutton-rocket-propulsion-elements",
+  "title": "Rocket Propulsion Elements",
+  "subtitle": "9th Edition",
+  "author": "George P. Sutton & Oscar Biblarz",
+  "year": 2016,
+  "description": "The definitive textbook on chemical rocket propulsion. Master the physics of thrust generation, nozzle flow, and engine design through interactive simulation.",
+  "phase": "Sutton Core — Phase 1",
+  "totalModules": 9,
+  "estimatedHours": 22,
+  "accent": "#E30613",
+  "learningPath": [
+    {
+      "phase": "Fundamentals",
+      "modules": ["fundamentals-of-rocket-propulsion"]
+    },
+    {
+      "phase": "Core Theory",
+      "modules": ["nozzle-theory", "thrust-and-performance"]
+    },
+    {
+      "phase": "Engine Systems",
+      "modules": ["combustion", "turbomachinery", "liquid-engines"]
+    },
+    {
+      "phase": "Advanced & Capstone",
+      "modules": ["solid-motors", "flight-performance", "advanced-concepts"]
+    }
+  ],
+  "concepts": [
+    "Nozzle Theory & Isentropic Flow",
+    "Thrust & Specific Impulse",
+    "Combustion Chambers",
+    "Turbopumps & Feed Systems",
+    "Solid Propellant Rockets",
+    "Liquid Propellant Rockets",
+    "Heat Transfer & Cooling",
+    "Engine Cycles",
+    "Flight Performance"
+  ]
+}

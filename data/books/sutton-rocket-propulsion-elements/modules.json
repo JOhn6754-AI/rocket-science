@@ -1,0 +1,67 @@
+[
+  {
+    "id": "sutton-fundamentals",
+    "bookId": "sutton-rpe-9e",
+    "slug": "fundamentals-of-rocket-propulsion",
+    "title": "Fundamentals of Rocket Propulsion",
+    "chapterRef": "Chapter 1",
+    "summary": "Thrust is momentum exchange. Understand the rocket equation, propellant mass fraction, and why Isp and mass ratio dominate mission capability.",
+    "keyEquations": [
+      { "id": "eq1", "latex": "\\Delta v = v_e \\ln\\left(\\frac{m_0}{m_f}\\right)", "description": "Ideal rocket equation (Tsiolkovsky)" },
+      { "id": "eq2", "latex": "F = \\dot{m} v_e + (p_e - p_a) A_e", "description": "Thrust equation" }
+    ],
+    "objectives": [
+      "Derive thrust from control volume",
+      "Understand specific impulse (Isp) as efficiency metric",
+      "Calculate propellant mass fraction impact"
+    ],
+    "simulatorIds": [],
+    "estimatedMinutes": 35,
+    "order": 1
+  },
+  {
+    "id": "sutton-nozzle-theory",
+    "bookId": "sutton-rpe-9e",
+    "slug": "nozzle-theory",
+    "title": "Nozzle Theory & Isentropic Flow",
+    "chapterRef": "Chapters 2–3",
+    "summary": "The nozzle is where chemical energy becomes directed kinetic energy. Explore choked flow, expansion ratio, and shock formation.",
+    "keyEquations": [
+      { "id": "eq1", "latex": "\\frac{A}{A^*} = \\frac{1}{M} \\left[ \\frac{2 + (\\gamma-1)M^2}{\\gamma+1} \\right]^{\\frac{\\gamma+1}{2(\\gamma-1)}}", "description": "Area-Mach relation for isentropic nozzle" },
+      { "id": "eq2", "latex": "C_F = \\sqrt{ \\frac{2\\gamma^2}{\\gamma-1} \\left( \\frac{2}{\\gamma+1} \\right)^{\\frac{\\gamma+1}{\\gamma-1}} \\left( 1 - \\left( \\frac{p_e}{p_c} \\right)^{\\frac{\\gamma-1}{\\gamma}} \\right) } + \\varepsilon \\frac{(p_e-p_a)}{p_c}", "description": "Thrust coefficient (Sutton)" }
+    ],
+    "objectives": [
+      "Map nozzle pressure ratio to exit Mach",
+      "Design optimum expansion for altitude",
+      "Visualize over/under expanded plumes"
+    ],
+    "simulatorIds": ["nozzle-theory-lab"],
+    "estimatedMinutes": 55,
+    "order": 2,
+    "levels": [3],
+    "prerequisites": ["sutton-fundamentals"],
+    "crossConnections": [
+      { "bookId": "anderson-foa-5e", "moduleId": "anderson-shocks-expansions", "description": "Nozzle exit pressure drives shock/expansion behavior in atmosphere" }
+    ]
+  },
+  {
+    "id": "sutton-thrust-performance",
+    "bookId": "sutton-rpe-9e",
+    "slug": "thrust-and-performance",
+    "title": "Thrust, c*, and Performance Parameters",
+    "chapterRef": "Chapter 2–3",
+    "summary": "c* measures combustion performance independent of nozzle. CF measures nozzle contribution. Together they determine delivered Isp.",
+    "keyEquations": [
+      { "id": "eq1", "latex": "c^* = \\frac{p_c A_t}{\\dot{m}}", "description": "Characteristic velocity" },
+      { "id": "eq2", "latex": "I_{sp} = \\frac{C_F \\cdot c^*}{g_0}", "description": "Isp from c* and thrust coefficient" }
+    ],
+    "objectives": [
+      "Calculate c* from chamber conditions",
+      "Separate combustor vs nozzle contributions to Isp",
+      "Predict delivered performance at different altitudes"
+    ],
+    "simulatorIds": ["nozzle-theory-lab"],
+    "estimatedMinutes": 40,
+    "order": 3
+  }
+]

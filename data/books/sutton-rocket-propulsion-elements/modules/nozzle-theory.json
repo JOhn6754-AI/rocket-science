@@ -1,0 +1,38 @@
+{
+  "id": "sutton-nozzle-theory",
+  "bookId": "sutton-rpe-9e",
+  "slug": "nozzle-theory",
+  "title": "Nozzle Theory & Isentropic Flow",
+  "chapterRef": "Chapters 2–3",
+  "order": 2,
+  "summary": "The nozzle converts thermal energy into directed kinetic energy. Explore choked flow, the area-Mach relation, expansion ratio design, and how back-pressure creates shock diamonds or plume expansion.",
+  "estimatedMinutes": 55,
+  "difficulty": "Core",
+  "keyEquations": [
+    {
+      "label": "Area–Mach Relation",
+      "latex": "\\frac{A}{A_t} = \\frac{1}{M} \\left[ \\frac{2 + (\\gamma-1)M^2}{\\gamma+1} \\right]^{\\frac{\\gamma+1}{2(\\gamma-1)}}",
+      "description": "Relates local area ratio to Mach number for isentropic flow"
+    },
+    {
+      "label": "Thrust Coefficient",
+      "latex": "C_F = \\sqrt{\\frac{2\\gamma^2}{\\gamma-1} \\left( \\frac{2}{\\gamma+1} \\right)^{\\frac{\\gamma+1}{\\gamma-1}} \\left(1 - \\left(\\frac{p_e}{p_c}\\right)^{\\frac{\\gamma-1}{\\gamma}} \\right)} + \\varepsilon \\frac{(p_e - p_a)}{p_c}",
+      "description": "Dimensionless thrust. Momentum + pressure thrust terms."
+    },
+    {
+      "label": "Isp from c* and CF",
+      "latex": "I_{sp} = \\frac{C_F \\cdot c^*}{g_0}",
+      "description": "Specific impulse is the key figure of merit"
+    }
+  ],
+  "objectives": [
+    "Derive exit Mach from nozzle expansion ratio using the area-Mach relation",
+    "Calculate Isp (vacuum and sea-level) and understand the effect of ambient pressure",
+    "Classify flow regimes: ideally-expanded, under-expanded, over-expanded",
+    "Design optimum expansion ratio for a target altitude",
+    "Visualize property gradients (Mach, pressure, temperature) inside the nozzle"
+  ],
+  "simulatorId": "nozzle-theory-lab",
+  "simulatorRoute": "/simulators/nozzle-theory",
+  "tags": ["core", "nozzle", "isentropic", "flagship"]
+}
