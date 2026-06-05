@@ -8,7 +8,7 @@ compatibility_date = "2025-06-01"
 command = "npm run build"
 cwd = "."
 
-[pages_build_output_dir] = "out"
+pages_build_output_dir = "out"
 
 # If you later move to full SSR with @cloudflare/next-on-pages:
 # [build]
