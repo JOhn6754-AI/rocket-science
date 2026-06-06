@@ -8,45 +8,47 @@
     "Understand how finite aspect ratio creates induced drag via wingtip vortices",
     "Calculate the effect of aspect ratio and taper on lift slope and induced drag using lifting-line theory"
   ],
-  "coreExplanation": "A flat plate at a slight angle to the wind produces lift. Why? The air going over the top has farther to travel than the air going underneath (because of the angle), so it speeds up and pressure drops (Bernoulli). But that's only part of the story.\n\nThe real key is the Kutta condition: at the sharp trailing edge, the flow must leave smoothly, not go around the edge. This forces the air to circulate around the wing. Circulation + freestream velocity = lift (Kutta-Joukowski theorem).\n\nCamber (curvature) makes the wing produce lift even at zero geometric angle of attack because it changes the effective angle the air 'sees'.\n\nFor a real finite wing, the lift creates wingtip vortices that tilt the local flow downward (downwash). This reduces the effective angle of attack the wing sees, so you need a higher geometric angle to get the same lift — and that extra angle creates extra drag (induced drag). Higher aspect ratio wings have less induced drag because the tip effects are relatively smaller.",
+  "coreExplanation": "Lift on a wing is not primarily 'the air on top has farther to go so it goes faster.' That story is a useful approximation at best and actively misleading at worst.\n\nThe real mechanism is circulation. At the sharp trailing edge of any well-designed airfoil, the flow must leave smoothly (the Kutta condition). This forces the air to develop a net circulation Γ around the entire wing. By the Kutta-Joukowski theorem, lift per unit span is simply L' = ρ∞ × V∞ × Γ.\n\nCamber (the gentle curvature of the airfoil) changes the effective angle that the airfoil 'sees.' A cambered airfoil produces positive lift even at zero geometric angle of attack because the trailing-edge condition requires circulation.\n\nFor a real finite wing (every wing has tips), the high pressure on the bottom leaks around the tip toward the low pressure on top. This creates a pair of strong, counter-rotating tip vortices that trail for miles behind a large aircraft. The vortices induce a downward velocity component (downwash) in the flow behind the wing. The local flow vector is tilted; therefore the lift vector, which is always perpendicular to the local flow, is tilted backward. That rearward component is induced drag.\n\nInduced drag scales with CL² / (π × AR × e) where AR is aspect ratio and e is Oswald efficiency. High aspect ratio wings (long and skinny) have far less induced drag for the same total lift because the tip vortices represent a smaller fraction of the span. Low aspect ratio surfaces (rocket fins, delta wings, grid fins) pay a high induced-drag penalty but buy structural strength and control authority.\n\nThe Airfoil & Finite Wing Lab lets you change camber, alpha, AR, and taper in real time and watch Cl, CL, CDi, and the pressure distribution update instantly — exactly the quantities used in Anderson Chapters 4–5.",
   "visualExplanations": [
     {
       "description": "Streamlines around a cambered airfoil at positive alpha showing higher velocity (denser streamlines) on top, plus a superimposed circulation arrow around the airfoil.",
-      "imagePrompt": "Clean 2D aerodynamic diagram, dark background. Cambered airfoil (NACA-like) at +4 deg alpha. Blue streamlines coming from left, bunching tightly over the upper surface (fast), spreading under (slow). Red dashed circle arrow around the airfoil labeled 'Circulation Γ'. Velocity vectors on surface. Small pressure + on bottom, - on top. Professional vector illustration, cyan/red accents, textbook quality."
+      "imagePrompt": "Clean 2D aerodynamic diagram, dark background. Cambered airfoil (NACA-like) at +4 deg alpha. Blue streamlines coming from left, bunching tightly over the upper surface (fast), spreading under (slow). Red dashed circle arrow around the airfoil labeled 'Circulation Γ'. Velocity vectors on surface. Small pressure + on bottom, - on top. Professional vector illustration, cyan/red accents, textbook quality.",
+      "image": "/images/lessons/airfoil-circulation.jpg"
     },
     {
       "description": "3D view of finite wing with tip vortices rolling up from high pressure below to low pressure above, trailing behind as helical vortices, with downwash in the wake.",
-      "imagePrompt": "3D isometric technical rendering of a straight wing on dark background. High pressure (red +) under the wing, low pressure (blue -) on top. At tips, flow curls into two large counter-rotating vortices trailing behind the wing. Arrows showing downwash between the vortices. Label 'Induced drag from tip vortices'. Clean engineering 3D style, subtle shadows, cyan/red highlights."
+      "imagePrompt": "3D isometric technical rendering of a straight wing on dark background. High pressure (red +) under the wing, low pressure (blue -) on top. At tips, flow curls into two large counter-rotating vortices trailing behind the wing. Arrows showing downwash between the vortices. Label 'Induced drag from tip vortices'. Clean engineering 3D style, subtle shadows, cyan/red highlights.",
+      "image": "/images/lessons/wing-vortices.jpg"
     }
   ],
   "interactiveSection": {
     "simulatorId": "airfoil-wing",
     "guidedPrompts": [
-      "Symmetric 0012 at alpha=0: Cl should be near zero. Add 2% camber (2412) at alpha=0: Cl jumps positive.",
-      "Fix alpha=4°, increase AR from 4 to 12. See how CL increases and CDi drops.",
-      "Look at the pressure distribution plot. High negative Cp (suction) near the leading edge on the upper surface — that's where most lift comes from.",
-      "Try a highly tapered wing (taper=0.2). Note the change in effective Oswald efficiency."
+      "Start with the symmetric NACA 0012 at α = 0°. Cl should be essentially zero. Now load the cambered 2412 at the same α = 0°. Cl jumps positive immediately — camber alone produces lift.",
+      "Fix α = 4° and sweep AR from 4 (stubby fin) to 12 (high-performance wing). Watch CL rise and CDi fall. This is the direct penalty of low aspect ratio.",
+      "Inspect the Cp distribution. The huge negative pressure peak near the leading edge on the upper surface is where most of the lift is generated. Move the peak and you move the aerodynamic center.",
+      "Try a highly tapered planform (taper ratio 0.2). Notice how the lift distribution changes and Oswald efficiency drops — real wings are tapered for structural reasons but pay an induced-drag price."
     ]
   },
   "reflectionAndChallenges": [
-    "Why does a symmetric airfoil at zero alpha produce zero lift, while a cambered one produces positive lift? Use the Kutta condition in your answer.",
-    "If you double the aspect ratio of a wing, roughly what happens to induced drag at the same CL? Why?",
-    "For a rocket fin, would you prefer high or low aspect ratio? What are the stability vs drag trade-offs?"
+    "Why does a symmetric airfoil at zero geometric alpha produce zero lift while an otherwise identical cambered airfoil produces positive lift at the same alpha? Use the Kutta condition in your answer.",
+    "If you double the aspect ratio of a wing while holding total lift and dynamic pressure constant, roughly what happens to induced drag? Why is the relationship not simply 1/2?",
+    "You are designing fins for a sounding rocket that must be stable at both low speed (launch) and high speed (supersonic). Would you choose high or low aspect ratio? What are the stability, drag, and structural trade-offs?"
   ],
   "commonMisconceptions": [
-    "Equal transit time explains lift — The 'longer path over the top' idea is a common simplification but incomplete and sometimes wrong for explaining why cambered airfoils produce lift at zero alpha.",
-    "Wings only work because of Bernoulli — Circulation and the Kutta condition are more fundamental; Bernoulli is a consequence.",
-    "Induced drag only matters for gliders — Every finite wing has it. For rockets, fins and canards create induced drag that affects stability and control."
+    "Equal transit time (longer path over the top) fully explains lift — This is a common classroom story but incomplete. Cambered airfoils produce lift at zero alpha with no 'longer path' difference that can explain the circulation.",
+    "Wings only work because of Bernoulli — Bernoulli relates pressure and velocity, but the fundamental reason pressure is lower on top is the circulation required by the Kutta condition. Bernoulli is a consequence, not the root cause.",
+    "Induced drag only matters for gliders and airliners — Every finite wing or fin produces it. For rockets, fins, canards, and grid fins all generate induced drag that affects stability margins, control effectiveness, and trajectory performance."
   ],
   "realWorldConnections": [
-    "Falcon 9 grid fins are low aspect ratio, high induced drag devices used only for steering during reentry, not for lift.",
-    "Starship flaps are large control surfaces that trade induced drag for control authority at high altitude where dynamic pressure is low.",
-    "High-performance sailplanes have aspect ratios of 40+ specifically to minimize induced drag."
+    "Falcon 9 grid fins are deliberately low-aspect-ratio, high-induced-drag devices. They are used only during reentry for steering when dynamic pressure is low; they are folded away for ascent.",
+    "Starship’s large body flaps and forward flaps are low-AR control surfaces that trade induced drag for the massive control authority needed in the thin upper atmosphere.",
+    "Competition sailplanes routinely fly aspect ratios of 40–60 specifically to drive induced drag to extremely low levels at the lift coefficients required for efficient thermalling and cruise."
   ],
   "nextSteps": [
-    "In Rocket Forge, add a set of fins with low AR and high Cd. See the effect on max-Q loads and apogee.",
-    "Use the Compressible Flow Lab to see how at high Mach the airfoil pressure distribution changes dramatically (shock on upper surface).",
-    "Design a winged booster in Forge and optimize AR vs structural mass for a boost-back trajectory."
+    "In Rocket Forge, add a set of low-AR fins with realistic Cd and watch the effect on max-Q structural loads and on apogee. Then try high-AR fins and compare.",
+    "Move to the Compressible Flow Lab. At M = 0.8+ the upper-surface pressure distribution you just studied develops a shock. The same airfoil that was gentle subsonically can produce a sudden drag rise.",
+    "Design a winged recoverable booster in Forge. Optimize AR versus structural mass and hinge moments for a boost-back or RTLS trajectory. The induced drag numbers from the lab become real Δv losses."
   ],
   "videoStoryboards": [
     {

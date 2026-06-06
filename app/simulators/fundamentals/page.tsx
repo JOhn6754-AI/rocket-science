@@ -95,7 +95,7 @@ export default function FundamentalsDemo() {
       <div className="border-b border-[#222] bg-[#0a0a0a]">
         <div className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/learn" className="flex items-center gap-2 text-sm text-[#888] hover:text-white">
+            <Link href="/from-scratch" className="flex items-center gap-2 text-sm text-[#888] hover:text-white">
               <ArrowLeft className="h-4 w-4" /> Rocket Science from Scratch
             </Link>
             <div className="h-3 w-px bg-[#333]" />
@@ -289,7 +289,7 @@ export default function FundamentalsDemo() {
           </p>
 
           <div className="mt-4 text-sm">
-            <Link href="/learn" className="btn-primary inline-block">Continue to the full learning path →</Link>
+            <Link href="/from-scratch" className="btn-primary inline-block">Continue to the full learning path →</Link>
           </div>
 
           <div className="mt-6 pt-4 border-t border-[#222] text-xs text-[#666]">

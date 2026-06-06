@@ -8,45 +8,47 @@
     "Use the Prandtl-Meyer function to find flow properties after an expansion fan",
     "Explain why shocks are irreversible (entropy increase) while Prandtl-Meyer expansions are isentropic"
   ],
-  "coreExplanation": "At low speeds, air is basically incompressible — density doesn't change much. But when the flow approaches or exceeds the speed of sound, compressing or expanding the gas changes its density, temperature, and pressure dramatically.\n\nA supersonic flow hitting a sudden compression (like the nose of a wedge) can't 'know' what's coming because pressure signals travel at the speed of sound. The information piles up into a shock wave. Across the shock, pressure, temperature, and density jump upward; velocity and Mach number drop.\n\nIf the flow turns away from itself (convex corner), it can expand smoothly through a fan of Mach waves — a Prandtl-Meyer expansion. Pressure, temperature, and density drop; velocity and Mach increase. No shock, no entropy increase.\n\nThis is why supersonic inlets, nozzles, and reentry vehicles look the way they do: they are carefully shaped to create the right pattern of shocks and expansions to slow or accelerate the flow without destroying too much total pressure.",
+  "coreExplanation": "Below roughly Mach 0.3, air behaves as if it has constant density. Once the flow approaches or exceeds the speed of sound, density changes become first-order effects and the entire character of the flow changes.\n\nWhen supersonic flow encounters a compression (a wedge nose, a blunt body, an over-expanded nozzle lip), pressure information cannot propagate upstream faster than the speed of sound. The information 'piles up' into an extremely thin discontinuity — a shock wave. Across a normal shock, pressure, temperature, and density jump upward; velocity and Mach number drop; and, most importantly, total pressure is lost forever because entropy increases. The stronger the shock (higher upstream Mach or higher deflection), the greater the loss.\n\nIf the flow is instead turned away from itself (a convex corner), the gas can expand smoothly through a continuous fan of Mach waves — a Prandtl-Meyer expansion fan. Pressure, temperature, and density fall; velocity and Mach rise. Because the process is isentropic, total pressure is preserved. This is why well-designed supersonic inlets and rocket nozzles try to use isentropic compression or expansion wherever possible.\n\nThe θ-β-M relation governs attached oblique shocks: for a given Mach and deflection angle θ there is a shock angle β that satisfies the geometry and the Rankine-Hugoniot relations. Beyond a certain θ the shock detaches and becomes a strong normal shock standing in front of the body — with much higher losses.\n\nIn the Compressible Flow Lab you can switch between normal shock, oblique shock, and Prandtl-Meyer modes and watch p2/p1, M2, and entropy change update live. The same pressure ratios you create with a nozzle in the Nozzle Lab appear here as the flow structures around the vehicle in the atmosphere.",
   "visualExplanations": [
     {
       "description": "Diagram of a wedge in supersonic flow showing the oblique shock wave at angle β, flow deflected by θ after the shock, with regions labeled 1 (freestream) and 2 (post-shock).",
-      "imagePrompt": "Technical 2D diagram, dark background. Sharp wedge pointing left into horizontal supersonic flow lines (cyan). A straight oblique shock line emanates from the wedge tip at angle β from the flow. After the shock, flow lines are deflected downward by angle θ. Label freestream M1, post-shock M2 < M1, β, θ. Pressure jump shown with color: light before, darker after. Clean vector art, red/cyan, aerospace textbook style."
+      "imagePrompt": "Technical 2D diagram, dark background. Sharp wedge pointing left into horizontal supersonic flow lines (cyan). A straight oblique shock line emanates from the wedge tip at angle β from the flow. After the shock, flow lines are deflected downward by angle θ. Label freestream M1, post-shock M2 < M1, β, θ. Pressure jump shown with color: light before, darker after. Clean vector art, red/cyan, aerospace textbook style.",
+      "image": "/images/lessons/oblique-shock.jpg"
     },
     {
       "description": "Convex corner with a fan of Mach waves (characteristic lines) spreading from the corner, flow turning gradually through the fan with increasing Mach number.",
-      "imagePrompt": "Clean diagram of a 90-degree convex corner. Supersonic flow from left. At the corner, a series of straight Mach lines fan out at increasing angles. Flow turns smoothly around the corner. Color gradient from cyan (M1) to deeper blue (higher M2) across the fan. Label the first and last characteristic, turning angle ν. Professional, high-contrast illustration on dark bg."
+      "imagePrompt": "Clean diagram of a 90-degree convex corner. Supersonic flow from left. At the corner, a series of straight Mach lines fan out at increasing angles. Flow turns smoothly around the corner. Color gradient from cyan (M1) to deeper blue (higher M2) across the fan. Label the first and last characteristic, turning angle ν. Professional, high-contrast illustration on dark bg.",
+      "image": "/images/lessons/prandtl-meyer-fan.jpg"
     }
   ],
   "interactiveSection": {
     "simulatorId": "compressible-flow",
     "guidedPrompts": [
-      "Fix M1=2.0, increase wedge angle θ from 0 to 20°. Watch β increase and the post-shock M2 drop.",
-      "At the same M1, compare a normal shock (θ=0 effectively) vs oblique shock at θ=10°. Note how much weaker the oblique shock is (smaller p2/p1).",
-      "Switch to Prandtl-Meyer mode. Increase turning angle. See M2 rise and pressure ratio fall — all isentropically.",
-      "Look at the p2/p1 curve vs deflection. At high enough θ the shock detaches (no attached oblique solution)."
+      "Fix M1 = 2.0 and sweep wedge angle θ from 0° to 20°. Watch β increase and post-shock M2 drop. At some angle the attached solution disappears — the shock detaches.",
+      "At the same M1, compare a normal shock (effectively θ = 0 but full normal) versus an oblique shock at θ = 10°. The oblique shock has a much smaller pressure jump and far less total pressure loss.",
+      "Switch to Prandtl-Meyer mode. Increase the turning angle. M2 rises and pressure falls continuously and isentropically — no jump, no loss. This is the expansion that happens inside a properly designed over-expanded nozzle in vacuum or at altitude.",
+      "Plot p2/p1 versus deflection. Notice how quickly the loss curve becomes punishing for strong shocks. This is why real supersonic inlets use multiple weak oblique shocks rather than one normal shock."
     ]
   },
   "reflectionAndChallenges": [
-    "For a given M1, is the total pressure loss higher for a normal shock or an oblique shock with the same deflection? Why?",
-    "Why are Prandtl-Meyer expansions isentropic while shocks are not? What does that mean for nozzle design?",
-    "A supersonic inlet designer wants to slow M=2.5 air to M=0.5 for the engine. Compare a single normal shock vs a series of two oblique shocks + one normal. Which has less loss?"
+    "For a given upstream Mach, is the total pressure loss higher for a normal shock or for an oblique shock that produces the same flow deflection? Why does the answer matter for inlet and nozzle design?",
+    "Why are Prandtl-Meyer expansions fundamentally isentropic while shocks are not? What does that mean for the performance of a rocket nozzle that is over-expanded at sea level?",
+    "A supersonic inlet designer must slow M = 2.5 air to M = 0.5 for the engine. Compare a single normal shock versus two oblique shocks followed by a terminal normal shock. Which has lower total pressure loss and why?"
   ],
   "commonMisconceptions": [
-    "Shocks are just like sound waves but louder — No. Normal shocks are extremely thin (a few mean free paths) and produce large, irreversible jumps in entropy and total pressure loss.",
-    "You can expand or compress supersonically the same way — Compression through a shock is sudden and lossy; expansion through a fan is gradual and lossless (isentropic).",
-    "All supersonic inlets use shocks to slow the flow — Yes, but good ones use multiple oblique shocks or isentropic compression to minimize total pressure loss compared to a single normal shock."
+    "Shocks are just very loud sound waves — No. A normal shock is only a few mean free paths thick. It produces finite, irreversible jumps in all properties and a permanent loss of total pressure. Sound waves are isentropic to first order.",
+    "You can expand or compress supersonically the same way — Compression through a shock is sudden and lossy. Expansion through a Prandtl-Meyer fan is gradual and lossless (isentropic). The two processes are not symmetric.",
+    "All supersonic inlets just use shocks to slow the flow — Good ones use carefully designed multiple oblique shocks or near-isentropic compression surfaces precisely to avoid the huge total pressure loss of a single normal shock."
   ],
   "realWorldConnections": [
-    "The SR-71 inlet used a complex system of oblique shocks and a translating spike to slow air from Mach 3+ to subsonic for the engines with minimal losses.",
-    "Rocket nozzles that are over-expanded at sea level (like many first-stage engines) have oblique shocks inside or at the lip that can cause flow separation and side loads.",
-    "Hypersonic vehicles like the X-43 or proposed boost-glide weapons are shaped to ride on their own shock waves (wave-riding)."
+    "The SR-71 Blackbird inlet used a translating spike and a complex system of oblique shocks to slow air from above Mach 3 down to subsonic for the engines while preserving as much total pressure as possible.",
+    "First-stage rocket nozzles that are over-expanded at sea level (most boosters) contain oblique shocks and expansion fans inside or at the lip. These can cause flow separation, side loads, and reduced thrust until the vehicle climbs high enough for the nozzle to become ideally or under-expanded.",
+    "Hypersonic wave-riders (X-43, proposed boost-glide vehicles) are shaped so that their own shock waves provide lift and compression. The vehicle 'rides' the shock it creates."
   ],
   "nextSteps": [
-    "In the Nozzle Lab, set a high ε and low altitude (high pa). Observe the over-expanded plume and the shock structure inside it.",
-    "In Rocket Forge, design a hypersonic first stage or reentry vehicle and note how wave drag from the compressible lab would affect your Cd.",
-    "Explore how staging at high altitude lets you use higher-ε nozzles without the over-expansion penalty at sea level."
+    "In the Nozzle Theory Lab, set a high expansion ratio and sea-level ambient pressure. Watch the visual over-expanded plume and mentally map the internal oblique shocks and separation you are seeing onto the diagrams in this lesson.",
+    "In Rocket Forge, design a hypersonic first stage or a reentry vehicle. The wave drag and pressure coefficients coming out of the compressible lab become real contributions to your vehicle’s Cd and heating.",
+    "Explore staging at high altitude in Forge. Once you are above most of the atmosphere you can use much higher-ε nozzles without paying the over-expansion penalty at sea level — exactly because the ambient pressure that drives the shock losses has dropped."
   ],
   "videoStoryboards": [
     {

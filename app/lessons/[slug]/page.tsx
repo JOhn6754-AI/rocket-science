@@ -27,7 +27,7 @@ export default async function LessonPage({ params }: { params: Promise<{ slug: s
       <div className="border-b border-[#222] bg-[#0a0a0a] py-3">
         <div className="mx-auto max-w-4xl px-6 flex items-center justify-between text-sm">
           <Link href="/lessons" className="text-[#888] hover:text-white">← All Lessons</Link>
-          <Link href="/learn" className="text-[#888] hover:text-white">Learning Path</Link>
+          <Link href="/from-scratch" className="text-[#888] hover:text-white">Learning Path</Link>
         </div>
       </div>
       <LessonView lesson={lesson} />

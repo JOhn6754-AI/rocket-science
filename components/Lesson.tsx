@@ -3,13 +3,14 @@
 import React from "react";
 import Link from "next/link";
 import { Lesson } from "@/lib/types";
+import { InlineMath, BlockMath } from "react-katex";
 
 /**
- * Reusable Lesson Renderer - Phase 4.5 Strict Template
+ * Reusable Lesson Renderer - Phase 4.6 Educational Polish
  * 
  * CRITICAL RULE: This component MUST NEVER render raw imagePrompt or storyboardPrompt fields.
  * Those fields exist ONLY for asset generation (Grok Imagine / video tools).
- * The UI only ever shows clean user-facing content: description, title, coreExplanation, etc.
+ * The UI only ever shows clean user-facing content + the pre-generated images referenced by `image` path.
  */
 
 interface LessonProps {
@@ -25,8 +26,11 @@ export default function LessonView({ lesson }: LessonProps) {
           {lesson.level} • {lesson.tags?.join(" • ") || ""}
         </div>
         <h1 className="text-4xl font-semibold tracking-[-0.02em] mt-2">{lesson.title}</h1>
-        <div className="text-sm text-[#888] mt-1">
-          {lesson.estimatedMinutes ? `${lesson.estimatedMinutes} min` : ""} • Lesson ID: {lesson.lessonId}
+        <div className="text-sm text-[#888] mt-1 flex items-center gap-2 flex-wrap">
+          {lesson.estimatedMinutes ? `${lesson.estimatedMinutes} min read` : ""} 
+          <span className="text-[#444]">•</span> 
+          <span>Lesson ID: {lesson.lessonId}</span>
+          <Link href="/from-scratch" className="text-[#00d4ff] text-xs ml-2 hover:underline">← Back to full learning path</Link>
         </div>
       </div>
 
@@ -48,44 +52,56 @@ export default function LessonView({ lesson }: LessonProps) {
         </div>
       </section>
 
-      {/* Visual Explanations - ONLY the description is shown to the user.
-         imagePrompt is stored for generation tools and is NEVER rendered. */}
+      {/* Visual Explanations + Embedded Generated Images */}
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-3">Visual Explanations</h2>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-6">
           {lesson.visualExplanations.map((vis, index) => (
             <div key={index} className="mission-panel p-4">
-              <div className="text-sm font-medium mb-2">{vis.description}</div>
-              <div className="text-[10px] text-[#666] italic mt-2">
-                (Supporting diagram — generated via Grok Imagine using a separate internal prompt)
-              </div>
+              <div className="text-sm font-medium mb-3 text-[#f5f5f5]">{vis.description}</div>
+              {vis.image ? (
+                <div className="relative overflow-hidden rounded border border-[#222] bg-black">
+                  <img 
+                    src={vis.image} 
+                    alt={vis.description} 
+                    className="w-full h-auto block" 
+                  />
+                </div>
+              ) : (
+                <div className="h-48 flex items-center justify-center border border-[#222] rounded text-[#555] text-xs">
+                  Diagram available in full curriculum materials
+                </div>
+              )}
+              <div className="text-[10px] text-[#555] mt-2 italic">Engineering visualization</div>
             </div>
           ))}
         </div>
+        <p className="text-xs text-[#666] mt-2">These diagrams were generated specifically to illustrate the concepts. Open the linked simulator to interact with the same physics in real time.</p>
       </section>
 
-      {/* Interactive Section - clean guided prompts only */}
+      {/* Interactive Section — Strong bridge from lesson to simulator */}
       <section className="mission-panel p-6 mb-8 border-l-4 border-[#00d4ff]">
         <h2 className="text-xl font-semibold mb-2 text-[#00d4ff]">Interactive Exploration</h2>
         <p className="text-sm text-[#d1d1d1] mb-4">
-          Open the simulator below and follow the guided prompts to actively explore the concepts.
+          Theory becomes intuition when you change the variables yourself. The simulator below implements the exact equations and flow physics described above.
         </p>
         
         <Link 
           href={`/simulators/${lesson.interactiveSection.simulatorId}`} 
           className="btn-primary inline-block text-sm mb-4"
         >
-          Open {lesson.interactiveSection.simulatorId} Simulator →
+          Launch {lesson.interactiveSection.simulatorId.replace(/-/g, ' ')} Simulator →
         </Link>
 
-        <div>
-          <div className="text-xs uppercase tracking-widest text-[#666] mb-1">Guided Prompts:</div>
-          <ul className="text-sm list-disc pl-5 text-[#a1a1aa]">
+        <div className="mt-4">
+          <div className="text-xs uppercase tracking-widest text-[#00d4ff] mb-2">Try These Experiments in the Simulator</div>
+          <ul className="text-sm list-disc pl-5 text-[#a1a1aa] space-y-1">
             {lesson.interactiveSection.guidedPrompts.map((item, i) => (
               <li key={i}>{item}</li>
             ))}
           </ul>
         </div>
+        <div className="mt-3 text-[10px] text-[#555]">Return here after experimenting — the reflection questions will make more sense.</div>
       </section>
 
       {/* Common Misconceptions */}
@@ -114,18 +130,15 @@ export default function LessonView({ lesson }: LessonProps) {
         </ol>
       </section>
 
-      {/* Video Storyboards - ONLY title + clean description shown.
-         storyboardPrompt is hidden and used only for generation. */}
+      {/* Video / Animation Concepts (storyboards for future motion visuals) */}
       {lesson.videoStoryboards && lesson.videoStoryboards.length > 0 && (
         <section className="mb-8">
-          <h2 className="text-xl font-semibold mb-3">Video Storyboards</h2>
+          <h2 className="text-xl font-semibold mb-3">Animated Explanations</h2>
           {lesson.videoStoryboards.map((sb, index) => (
-            <div key={index} className="mission-panel p-4 mb-3">
-              <div className="font-medium">{sb.title}</div>
+            <div key={index} className="mission-panel p-4 mb-3 border-l-2 border-[#E30613]/60">
+              <div className="font-medium text-sm">{sb.title}</div>
               <div className="text-sm text-[#a1a1aa] mt-1">{sb.description}</div>
-              <div className="text-[10px] text-[#666] mt-2 italic">
-                (Supporting video available — generated using a separate internal storyboard prompt)
-              </div>
+              <div className="text-[10px] text-[#555] mt-2">Full motion visualization planned for future updates. The static diagrams and live simulators above cover the core dynamics today.</div>
             </div>
           ))}
         </section>

@@ -93,6 +93,7 @@ export interface Curriculum {
 export interface LessonVisual {
   description: string;           // Clean description shown to user
   imagePrompt: string;           // Detailed prompt for Grok Imagine (NEVER shown in UI)
+  image?: string;                // Optional path to generated image, e.g. "/images/lessons/nozzle-cross-section.jpg" (served from public/)
 }
 
 export interface VideoStoryboard {

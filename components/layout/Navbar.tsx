@@ -15,7 +15,7 @@ export default function Navbar() {
   const { overallProgress } = useProgressStore();
 
   const navLinks = [
-    { href: "/learn", label: "From Scratch", icon: BookOpen },
+    { href: "/from-scratch", label: "From Scratch", icon: BookOpen },
     { href: "/lessons", label: "Lessons", icon: BookOpen },
     { href: "/simulators", label: "Simulators", icon: Zap },
     { href: "/rocket-forge", label: "Rocket Forge", icon: Wrench },

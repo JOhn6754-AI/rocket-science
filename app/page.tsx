@@ -66,10 +66,10 @@ export default function RocketScienceDashboard() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/books/sutton-rocket-propulsion-elements"
+              href="/from-scratch"
               className="btn-primary inline-flex h-12 items-center justify-center gap-3 rounded-xl px-8 text-base font-medium"
             >
-              Enter Sutton Core <ArrowRight className="h-4 w-4" />
+              Start Rocket Science from Scratch <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/simulators/nozzle-theory"
@@ -105,14 +105,14 @@ export default function RocketScienceDashboard() {
             <div className="uppercase tracking-[2.5px] text-xs text-[#E30613]">THE ONE TRUE PATH</div>
             <h2 className="text-3xl font-semibold tracking-[-0.02em]">Rocket Science from Scratch</h2>
           </div>
-          <Link href="/learn" className="text-sm text-[#00d4ff] flex items-center gap-1 hover:underline">
+          <Link href="/from-scratch" className="text-sm text-[#00d4ff] flex items-center gap-1 hover:underline">
             View full curriculum <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
         <div className="grid md:grid-cols-7 gap-3">
           {[1,2,3,4,5,6,7].map((n) => (
-            <Link key={n} href="/learn" className="mission-card p-4 text-center hover:border-[#E30613]/50 group">
+            <Link key={n} href="/from-scratch" className="mission-card p-4 text-center hover:border-[#E30613]/50 group">
               <div className="text-xs text-[#666]">LEVEL {n}</div>
               <div className="font-medium text-sm mt-1 group-hover:text-[#E30613] transition">{
                 ["Foundations","Rocket Eq","Propulsion","Aerodynamics","Staging","Trajectories","Capstone"][n-1]

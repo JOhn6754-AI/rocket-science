@@ -9,45 +9,47 @@
     "Classify nozzle flow regimes (ideal, under-, over-expanded) and their effects on performance",
     "Design an optimum expansion ratio for a target altitude"
   ],
-  "coreExplanation": "Imagine a balloon rocket. When you let go, air rushes out one way, and the balloon shoots the other. That's Newton's third law in action. A real rocket nozzle does the same thing, but with superheated gas at thousands of degrees and thousands of miles per hour.\n\nThe magic happens in the shape: a converging section squeezes the gas (like pinching a hose), then a diverging section lets it expand and accelerate even faster. This is the de Laval nozzle.\n\nAt the throat, the flow reaches the speed of sound (choked). After that, in the diverging part, it goes supersonic. The area ratio (exit area over throat area, called ε) determines the final speed and pressure of the exhaust.\n\nWhy does this matter? Because the faster and more efficiently you throw mass out the back, the more efficiently you go forward. Poor nozzle design wastes energy as heat or sideways thrust instead of pure forward push.",
+  "coreExplanation": "A rocket nozzle is the most elegant thermodynamic machine ever built. It takes random, high-pressure, high-temperature gas motion inside the combustion chamber and turns it into an orderly, hypersonic beam of gas pointed exactly backward.\n\nStart with the converging section. As the gas flows into a narrowing duct, it accelerates. By the time it reaches the narrowest point—the throat—it is traveling at the local speed of sound (Mach 1). This is called choked flow. Once the flow is sonic at the throat, further increases in chamber pressure do not increase the mass flow rate; the throat is the bottleneck.\n\nIn the diverging section the magic really happens. The area increases and the gas expands. Because the flow is already supersonic, expansion lowers the pressure and temperature while dramatically increasing velocity. The area ratio ε = Ae / At (exit area over throat area) directly sets the exit Mach number via the isentropic area-Mach relation:\n\nA/A* = (1/M) * [ (1 + ((γ-1)/2)M²) / ((γ+1)/2) ] ^ ((γ+1)/(2(γ-1)))\n\nThis is why vacuum-optimized engines have enormous bells (high ε) and sea-level boosters have shorter, stubbier nozzles (low-to-moderate ε).\n\nThrust comes from two sources: the momentum of the exhaust (ṁ * ve) plus the pressure imbalance at the exit plane ( (pe − pa) * Ae ). The thrust coefficient CF packages these effects into a single non-dimensional number that you can measure directly in the Nozzle Lab. Higher CF at a given ambient pressure means better nozzle design for that altitude.\n\nThe simulator lets you watch all of this in real time: change pc, γ, or ε and see Mach, pressure, temperature, and the three Isp values (vacuum, sea-level, and instantaneous) update instantly along with the visual plume regime.",
   "visualExplanations": [
     {
       "description": "Labeled cross-section of a de Laval nozzle showing converging, throat, diverging sections with flow arrows, Mach number increasing, pressure dropping.",
-      "imagePrompt": "Technical engineering diagram, dark background, clean white and cyan lines: cross-section of a rocket de Laval nozzle. Show converging section on left, narrow throat in middle, diverging bell on right. Label: Chamber (high P, low V), Throat (sonic, M=1), Exit (supersonic, low P). Add arrows for flow direction, color gradient from red (hot/high pressure) in chamber to blue (cool/fast) at exit. Subtle isentropic flow lines. Professional aerospace illustration style, high contrast, no text overflow. 16:9 aspect."
+      "imagePrompt": "Technical engineering diagram, dark background, clean white and cyan lines: cross-section of a rocket de Laval nozzle. Show converging section on left, narrow throat in middle, diverging bell on right. Label: Chamber (high P, low V), Throat (sonic, M=1), Exit (supersonic, low P). Add arrows for flow direction, color gradient from red (hot/high pressure) in chamber to blue (cool/fast) at exit. Subtle isentropic flow lines. Professional aerospace illustration style, high contrast, no text overflow. 16:9 aspect.",
+      "image": "/images/lessons/nozzle-cross-section.jpg"
     },
     {
       "description": "Three side-by-side diagrams: ideally expanded (straight plume), under-expanded (plume flares out with expansion waves), over-expanded (plume pinched with oblique shocks and separation).",
-      "imagePrompt": "Three panel technical illustration on dark background. Left: ideally expanded nozzle with clean cylindrical exhaust plume. Middle: under-expanded nozzle with exhaust flaring outward, Mach diamonds visible. Right: over-expanded nozzle with exhaust pinched inward, shock waves and possible flow separation at lip. Use red/cyan accents for waves. Label each: 'Ideal (pe=pa)', 'Under-expanded (pe>pa)', 'Over-expanded (pe<pa)'. Clean vector style, aerospace textbook quality."
+      "imagePrompt": "Three panel technical illustration on dark background. Left: ideally expanded nozzle with clean cylindrical exhaust plume. Middle: under-expanded nozzle with exhaust flaring outward, Mach diamonds visible. Right: over-expanded nozzle with exhaust pinched inward, shock waves and possible flow separation at lip. Use red/cyan accents for waves. Label each: 'Ideal (pe=pa)', 'Under-expanded (pe>pa)', 'Over-expanded (pe<pa)'. Clean vector style, aerospace textbook quality.",
+      "image": "/images/lessons/nozzle-regimes.jpg"
     }
   ],
   "interactiveSection": {
     "simulatorId": "nozzle-theory",
     "guidedPrompts": [
-      "Set sea level ambient (pa=1 bar) and increase ε from 5 to 50. Notice how Isp_sl peaks then drops while Isp_vac keeps rising.",
-      "Switch to vacuum (pa=0) and observe the plume always under-expands.",
-      "Try different propellants (change gamma and mol wt) and see effect on c* and Isp.",
-      "Look at the property distribution plot: how fast does Mach rise in the diverging section?"
+      "Set sea level ambient (pa=1 bar) and increase ε from 5 to 50. Notice how Isp_sl peaks then drops while Isp_vac keeps rising — this is the expansion ratio trade-off in one graph.",
+      "Switch to vacuum (pa=0) and observe the plume always under-expands. There is never a penalty for a bigger bell in space.",
+      "Try different propellants (change gamma and mol wt) and see the direct effect on c* (characteristic velocity) and Isp. Hotter, lighter gas wins.",
+      "Look at the property distribution plot: watch how fast Mach rises once the flow passes the throat. The acceleration is astonishing in the first 20% of the bell."
     ]
   },
   "reflectionAndChallenges": [
-    "If you are designing a booster that flies through sea level to 60 km, what single expansion ratio would you pick and why? What trade-offs?",
-    "Why does the area-Mach relation predict that you can never reach supersonic speeds in a purely converging nozzle?",
-    "In the lab, what happens to exit pressure pe as you increase ε at fixed pc? How does that relate to the plume visuals?"
+    "If you are designing a booster that flies through sea level to 60 km, what single expansion ratio would you pick and why? What trade-offs between sea-level performance and high-altitude Isp are you accepting?",
+    "Why does the area-Mach relation predict that you can never reach supersonic speeds in a purely converging nozzle, no matter how high the chamber pressure?",
+    "In the lab, what happens to exit pressure pe as you increase ε at fixed pc? How does that directly cause the visual change from ideal → under-expanded plume?"
   ],
   "commonMisconceptions": [
-    "Bigger nozzle is always better — No. Over-expansion at low altitude causes shock losses and can reduce thrust.",
-    "The nozzle 'squeezes' the gas to make it faster — Partially true in converging, but the real acceleration to supersonic happens in the diverging section through expansion.",
-    "Rockets need air to push against — False. They work best in vacuum. The nozzle pushes on the gas, the gas pushes back on the rocket (action-reaction)."
+    "Bigger nozzle is always better — No. Over-expansion at low altitude causes oblique shocks inside or at the lip, flow separation, side loads, and a measurable drop in thrust coefficient.",
+    "The nozzle 'squeezes' the gas to make it faster — Partially true only in the converging section. The real supersonic acceleration happens through expansion (pressure drop) in the diverging bell.",
+    "Rockets need air to push against — Completely false. They achieve their highest performance in vacuum. The nozzle pushes on the gas; by Newton’s third law the gas pushes the rocket forward."
   ],
   "realWorldConnections": [
-    "SpaceX Merlin engines use a sea-level nozzle (ε ≈ 16) on the booster and a larger vacuum-optimized nozzle on the upper stage.",
-    "The Space Shuttle Main Engine had a very high expansion ratio (ε≈77) optimized for vacuum but suffered performance loss if used at sea level.",
-    "Nozzle design is a major reason why first-stage engines look 'stubby' and upper-stage engines have huge bells."
+    "SpaceX Merlin 1D sea-level nozzles use ε ≈ 16. The vacuum variant on the upper stage uses a much larger bell (ε ≈ 165) optimized only for space.",
+    "The Space Shuttle Main Engine had one of the highest expansion ratios ever flown on a booster engine (ε ≈ 77.5). It was spectacular in vacuum but suffered significant performance loss and even flow separation risks if the nozzle had been used at sea level.",
+    "Nozzle design is why first-stage engines look short and fat while upper-stage and spacecraft engines have giant, delicate-looking bells."
   ],
   "nextSteps": [
-    "Take the Isp and CF values you measured in the lab and plug them into a Rocket Forge configuration for a single-stage vehicle.",
-    "Go to the Compressible Flow Lab and see how the same pressure ratios appear as normal/oblique shocks when the nozzle is over-expanded at low altitude.",
-    "In Rocket Forge, try designing a two-stage rocket where the first stage uses a low-ε nozzle and the second uses high-ε, and observe the effect on total Δv."
+    "Take the Isp and CF values you measured in the lab and plug them straight into a single-stage configuration in Rocket Forge. Watch how a 10-second change in Isp changes your payload to orbit estimate.",
+    "Go to the Compressible Flow Lab and reproduce the same pressure ratios you just created with the nozzle as oblique shocks and expansion fans on wedges — the physics is identical.",
+    "In Rocket Forge, design a two-stage vehicle. Give the booster a modest ε (good sea-level CF) and the upper stage a very high ε. Observe the dramatic jump in total Δv compared with using one compromise nozzle."
   ],
   "videoStoryboards": [
     {

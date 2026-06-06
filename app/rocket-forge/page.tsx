@@ -220,7 +220,7 @@ export default function RocketForgePage() {
       <div className="border-b border-[#222] bg-[#0a0a0a]">
         <div className="mx-auto max-w-7xl px-6 py-5 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link href="/learn" className="text-sm text-[#888] hover:text-white flex items-center gap-1">
+            <Link href="/from-scratch" className="text-sm text-[#888] hover:text-white flex items-center gap-1">
               ← Rocket Science from Scratch (Level 7)
             </Link>
             <div>

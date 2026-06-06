@@ -28,9 +28,9 @@ export default function LessonsPage() {
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f5]">
       <div className="border-b border-[#222] bg-[#0a0a0a]">
         <div className="mx-auto max-w-7xl px-6 py-6">
-          <Link href="/learn" className="text-xs text-[#888] hover:text-white">← Back to Learning Path</Link>
+          <Link href="/from-scratch" className="text-xs text-[#888] hover:text-white">← Back to Learning Path</Link>
           <h1 className="text-4xl font-semibold tracking-[-0.02em] mt-2">Deep Lessons</h1>
-          <p className="text-[#a1a1aa] mt-1">High-quality, simulator-connected explanations that turn book knowledge into intuition and skill.</p>
+          <p className="text-[#a1a1aa] mt-1">High-quality, simulator-connected explanations that turn book knowledge into intuition and skill. Start the full progressive path at <Link href="/from-scratch" className="text-[#00d4ff]">/from-scratch</Link>.</p>
         </div>
       </div>
 

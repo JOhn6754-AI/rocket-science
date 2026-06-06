@@ -143,6 +143,21 @@ Remove `output: "export"` from `next.config.ts` and use the Cloudflare adapter. 
 3. Add the book to `lib/book-data.ts` → `ALL_BOOKS`
 4. Update `generateStaticParams` in the dynamic routes if desired.
 
+## Images & Lesson Visuals (Phase 4.6 system)
+
+- All lesson diagrams live in `public/images/lessons/`.
+- In `data/lessons/*.json`, each `visualExplanations[]` entry now supports an optional `image` field (e.g. `"/images/lessons/nozzle-cross-section.jpg"`).
+- The `imagePrompt` field is **never** rendered — it is only reference for re-generation with Grok Imagine.
+- To add a new image:
+  1. Write a detailed aerospace-style prompt (dark bg, cyan/red accents, textbook precision, 16:9 preferred).
+  2. Generate with the image tool (or manually place high-quality diagram).
+  3. Copy to `public/images/lessons/descriptive-name.jpg`.
+  4. Add `"image": "/images/lessons/descriptive-name.jpg"` to the corresponding visual in the lesson JSON.
+- LessonView automatically renders the `<img>` with proper dark-theme framing when the field is present.
+- Video storyboards remain as clean descriptions only (full video generation is future work).
+
+The canonical beginner experience is now `/from-scratch`. The old `/learn` route redirects automatically.
+
 ---
 
 ## Next 2–3 Focused Prompts (Recommended Order)
